@@ -51,7 +51,6 @@ export function Footer() {
               </li>
               <li>
                 <a href="#contact" className="hover:text-white transition">
-                  {t('nav.contact')}
                 </a>
               </li>
             </ul>
