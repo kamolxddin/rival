@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 
 export function Showroom() {
-  const { t, language } = useLanguage();
+  const { t} = useLanguage();
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlayClick = () => {
@@ -13,7 +13,7 @@ export function Showroom() {
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-gray-900 text-white">
+    <section id='showroom' className="py-16 sm:py-24 bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -40,7 +40,7 @@ export function Showroom() {
             {!isPlaying ? (
               <>
                 {/* Video Thumbnail/Placeholder */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+                <div className="absolute inset-0 bg-linear-to-br from-gray-700 to-gray-900 flex items-center justify-center">
                   <div className="text-center">
                     <motion.button
                       whileHover={{ scale: 1.1 }}

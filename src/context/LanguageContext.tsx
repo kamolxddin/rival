@@ -16,7 +16,7 @@ const translations = {
     // Navbar
     'nav.about': 'Biz haqimizda',
     'nav.products': 'Mahsulotlarimiz',
-    'nav.contact': 'Aloqa',
+    'nav.showroom': 'Showroom',
     'nav.order': 'Buyurtma berish',
     
     // Hero

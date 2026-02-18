@@ -6,9 +6,9 @@ import Products from '@/features/home/Products';
 import { About } from '@/features/home/About';
 import { Showroom } from '@/features/home/Showroom';
 import { LoadingScreen } from '@/features/home/LoadingScreen';
-import { Navbar } from '@/features/home/Navbar';
+import { Navbar } from '@/features/layout/Navbar';
 import { Hero } from '@/features/home/Hero';
-import { Footer } from '@/shared/footer';
+import { Footer } from '@/features/layout/Footer';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
