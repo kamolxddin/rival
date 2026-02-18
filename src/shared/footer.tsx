@@ -85,7 +85,7 @@ export function Footer() {
                   href="tel:+998901234567"
                   className="hover:text-white transition"
                 >
-                  +998 90 123 45 67
+                  +998 55 500 18 00
                 </a>
               </li>
             </ul>
