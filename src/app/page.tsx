@@ -5,7 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 import Products from '@/features/home/Products';
 import { About } from '@/features/home/About';
 import { Showroom } from '@/features/home/Showroom';
-import { LoadingScreen } from '@/features/home/LoadingScreen';
+import { LoadingScreen } from '@/shared/LoadingScreen';
 import { Navbar } from '@/features/layout/Navbar';
 import { Hero } from '@/features/home/Hero';
 import { Footer } from '@/features/layout/Footer';
@@ -30,8 +30,8 @@ export default function App() {
       <div className="min-h-screen">
         <Navbar />
         <Hero />
-        <Products />
         <About />
+        <Products />
         <Showroom />
         <Footer />
       </div>

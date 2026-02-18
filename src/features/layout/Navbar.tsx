@@ -1,63 +1,59 @@
-"use client"
+"use client";
 
-import { Menu, X, Phone } from "lucide-react"
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
-import { useLanguage } from "@/context/LanguageContext"
-import { OrderForm } from "@/shared/Modals/OrderForm"
+import { Menu, X, Phone } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+// import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
+import { OrderForm } from "@/shared/Modals/OrderForm";
 
 export function Navbar() {
-  const { language, setLanguage, t } = useLanguage()
+  const { language, setLanguage, t } = useLanguage();
 
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [orderFormOpen, setOrderFormOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [orderFormOpen, setOrderFormOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   // Sticky blur on scroll
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Scroll lock when drawer open
   useEffect(() => {
-    document.body.style.overflow = mobileMenuOpen ? "hidden" : "auto"
-  }, [mobileMenuOpen])
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "auto";
+  }, [mobileMenuOpen]);
 
   const menuItems = [
     { href: "#about", label: t("nav.about") },
     { href: "#products", label: t("nav.products") },
     { href: "#showroom", label: t("nav.showroom") },
-  ]
+  ];
 
   return (
     <>
       {/* ================= NAVBAR ================= */}
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 
-        ${
-          scrolled
-            ? "bg-white/80 backdrop-blur-lg shadow-md"
-            : "bg-white/95"
-        }`}
+        ${scrolled ? "bg-white/80 backdrop-blur-lg shadow-md" : "bg-white/95"}`}
       >
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-20">
-
             {/* LOGO */}
             <div className="flex items-center h-full">
-              <Image
+              Miro
+              {/* <Image
                 src="/logo.webp"
                 alt="Miro"
                 width={140}
                 height={50}
                 priority
                 className="object-contain"
-              />
+              /> */}
             </div>
 
             {/* DESKTOP MENU */}
@@ -75,7 +71,6 @@ export function Navbar() {
 
             {/* RIGHT SIDE DESKTOP */}
             <div className="hidden lg:flex items-center gap-6">
-
               <a
                 href="tel:+998901234567"
                 className="flex items-center gap-2 text-gray-600 hover:text-black text-sm"
@@ -117,7 +112,6 @@ export function Navbar() {
             >
               <Menu />
             </button>
-
           </div>
         </div>
       </nav>
@@ -164,8 +158,8 @@ export function Navbar() {
                 {/* BUYURTMA */}
                 <button
                   onClick={() => {
-                    setOrderFormOpen(true)
-                    setMobileMenuOpen(false)
+                    setOrderFormOpen(true);
+                    setMobileMenuOpen(false);
                   }}
                   className="bg-gray-900 text-white py-3 rounded-full font-semibold"
                 >
@@ -175,14 +169,9 @@ export function Navbar() {
 
               {/* LANGUAGE MOBILE */}
               <div className="mt-auto flex gap-4 pt-10 text-sm font-semibold">
-                <button onClick={() => setLanguage("uz")}>
-                  O‘zbek
-                </button>
-                <button onClick={() => setLanguage("ru")}>
-                  Русский
-                </button>
+                <button onClick={() => setLanguage("uz")}>O‘zbek</button>
+                <button onClick={() => setLanguage("ru")}>Русский</button>
               </div>
-
             </motion.div>
           </>
         )}
@@ -194,5 +183,5 @@ export function Navbar() {
         onClose={() => setOrderFormOpen(false)}
       />
     </>
-  )
+  );
 }
