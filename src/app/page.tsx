@@ -27,7 +27,7 @@ export default function App() {
         {loading && <LoadingScreen key="loading" />}
       </AnimatePresence>
 
-      <div className="min-h-screen">
+      <div>
         <Navbar />
         <Hero />
         <About />
