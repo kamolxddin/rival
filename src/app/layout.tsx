@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="uz" suppressHydrationWarning>
-      <body className={poppins.className} suppressHydrationWarning>
+      <body className={`${poppins.className} overflow-x-hidden`} suppressHydrationWarning>
         <LanguageProvider>
           {children}
         </LanguageProvider>
