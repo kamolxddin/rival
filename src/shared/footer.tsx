@@ -1,67 +1,106 @@
-import { Instagram, Facebook, Mail, Phone, MapPin, Send } from 'lucide-react';
+'use client'
 
-const Footer = () => {
+import { Facebook, Instagram, Mail, Phone, MapPin, Send } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
+
+export function Footer() {
+  const { t } = useLanguage();
+
   return (
-    <footer id="contact" className="bg-gray-900 text-gray-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <footer id="contact" className="bg-gray-950 text-gray-300 w-full">
+
+      <div className="w-full px-6 sm:px-10 lg:px-16 py-16">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+
           {/* Company Info */}
-          <div>
-            <h3 className="text-white text-xl mb-4">Miro</h3>
-            <p className="text-sm mb-4">
-              Zamonaviy yashash uchun yuqori sifatli mebel. Bizning tanlangan kolleksiyamiz bilan makoningizni o'zgartiring.
+          <div className="space-y-4">
+            <h3 className="text-white text-2xl font-semibold">Miro</h3>
+            <p className="text-sm leading-relaxed max-w-md">
+              {t('about.description')}
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="hover:text-white transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
+
+            <div className="flex gap-5 pt-2">
+              <a href="#" className="hover:text-white transition">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="hover:text-white transition-colors">
+              <a href="#" className="hover:text-white transition">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="#" className="hover:text-white transition">
                 <Send className="w-5 h-5" />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="text-white mb-4">Tezkor havolalar</h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#home" className="hover:text-white transition-colors">Bosh sahifa</a></li>
-              <li><a href="#products" className="hover:text-white transition-colors">Mahsulotlar</a></li>
-              <li><a href="#about" className="hover:text-white transition-colors">Biz haqimizda</a></li>
-              <li><a href="#contact" className="hover:text-white transition-colors">Kontakt</a></li>
+          <div className="space-y-4">
+            <h4 className="text-white text-lg font-semibold">
+              {t('footer.company')}
+            </h4>
+
+            <ul className="space-y-3 text-sm">
+              <li>
+                <a href="#about" className="hover:text-white transition">
+                  {t('nav.about')}
+                </a>
+              </li>
+              <li>
+                <a href="#products" className="hover:text-white transition">
+                  {t('nav.products')}
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:text-white transition">
+                  {t('nav.contact')}
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* Contact Info */}
-          <div>
-            <h4 className="text-white mb-4">Biz bilan boglaning</h4>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-start gap-2">
-                <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                <span>Angren shahar, Baynalmilal</span>
+          <div className="space-y-4">
+            <h4 className="text-white text-lg font-semibold">
+              {t('contact.title')}
+            </h4>
+
+            <ul className="space-y-4 text-sm">
+              <li className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                <span>{t('contact.address')}</span>
               </li>
-              <li className="flex items-center gap-2">
+
+              <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 flex-shrink-0" />
-                <span>rivaluzofficial@gmail.com</span>
+                <a
+                  href="mailto:rivaluzofficial@gmail.com"
+                  className="hover:text-white transition"
+                >
+                  rivaluzofficial@gmail.com
+                </a>
               </li>
-              <li className="flex items-center gap-2">
+
+              <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 flex-shrink-0" />
-                <span>+998 500 18 00</span>
+                <a
+                  href="tel:+998901234567"
+                  className="hover:text-white transition"
+                >
+                  +998 90 123 45 67
+                </a>
               </li>
             </ul>
           </div>
-        </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
-          <p>&copy; 2026 Miro. Barcha huquqlar himoyalangan.</p>
         </div>
       </div>
-    </footer>
-  )
-}
 
-export default Footer
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-800 py-6 text-center text-sm text-gray-400">
+        <div className="max-w-[1400px] mx-auto px-6">
+          © 2026 Miro. {t('footer.rights')}
+        </div>
+      </div>
+
+    </footer>
+  );
+}

@@ -1,9 +1,10 @@
-'use client'
 import { motion } from 'motion/react';
 import { Play } from 'lucide-react';
 import { useState } from 'react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function Showroom() {
+  const { t, language } = useLanguage();
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlayClick = () => {
@@ -21,9 +22,9 @@ export function Showroom() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl mb-4">Bizning showroom</h2>
+          <h2 className="text-3xl sm:text-4xl mb-4">{t('showroom.title')}</h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            Ishxonamiz va tayyor mahsulotlarimizni video orqali ko'ring
+            {t('showroom.subtitle')}
           </p>
         </motion.div>
 
@@ -51,7 +52,7 @@ export function Showroom() {
                       <Play className="w-10 h-10 sm:w-12 sm:h-12 ml-1" fill="currentColor" />
                     </motion.button>
                     <p className="text-lg sm:text-xl text-white font-medium">
-                      Showroom videosini tomosha qiling
+                      {t('showroom.watchVideo')}
                     </p>
                   </div>
                 </div>
@@ -83,15 +84,15 @@ export function Showroom() {
           >
             <div className="bg-gray-800 rounded-xl p-6">
               <p className="text-3xl sm:text-4xl font-bold mb-2">500+</p>
-              <p className="text-gray-400">Bajarilgan loyihalar</p>
+              <p className="text-gray-400">{t('showroom.projects')}</p>
             </div>
             <div className="bg-gray-800 rounded-xl p-6">
               <p className="text-3xl sm:text-4xl font-bold mb-2">1000+</p>
-              <p className="text-gray-400">Mamnun mijozlar</p>
+              <p className="text-gray-400">{t('showroom.clients')}</p>
             </div>
             <div className="bg-gray-800 rounded-xl p-6">
-              <p className="text-3xl sm:text-4xl font-bold mb-2">4+ yil</p>
-              <p className="text-gray-400">Bozordagi tajriba</p>
+              <p className="text-3xl sm:text-4xl font-bold mb-2">4+ {t('showroom.years')}</p>
+              <p className="text-gray-400">{t('showroom.experience')}</p>
             </div>
           </motion.div>
         </motion.div>

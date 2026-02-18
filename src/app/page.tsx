@@ -1,20 +1,40 @@
-import { About } from "@/features/home/About";
-import  Hero  from "@/features/home/Hero";
-import Products from "@/features/home/Products";
-import { Showroom } from "@/features/home/Showroom";
-import Footer from "@/shared/footer";
+"use client"
 
+import { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import Products from '@/features/home/Products';
+import { About } from '@/features/home/About';
+import { Showroom } from '@/features/home/Showroom';
+import { LoadingScreen } from '@/features/home/LoadingScreen';
+import { Navbar } from '@/features/home/Navbar';
+import { Hero } from '@/features/home/Hero';
+import { Footer } from '@/shared/footer';
 
+export default function App() {
+  const [loading, setLoading] = useState(true);
 
-const Home = () => {
-    return <div>
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2500);
 
-        <Hero/>
-        <Products/>
-        <About/>
-        <Showroom/>
-        <Footer/>
-    </div>;
-};
+    return () => clearTimeout(timer);
+  }, []);
 
-export default Home;
+  return (
+    <>
+      <AnimatePresence mode="wait">
+        {loading && <LoadingScreen key="loading" />}
+      </AnimatePresence>
+
+      <div className="min-h-screen">
+        <Navbar />
+        <Hero />
+        <Products />
+        <About />
+        <Showroom />
+        <Footer />
+      </div>
+    </>
+  );
+}
