@@ -81,7 +81,7 @@ export function Navbar() {
                 className="flex items-center gap-2 text-gray-600 hover:text-black text-sm"
               >
                 <Phone className="w-4 h-4" />
-                +998 90 123 45 67
+                +998 55 500 18 00
               </a>
 
               {/* BUYURTMA BERISH */}
