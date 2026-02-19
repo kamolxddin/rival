@@ -44,17 +44,28 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-20">
             {/* LOGO */}
-            <div className="flex items-center h-full">
-              Miro
-              {/* <Image
-                src="/logo.webp"
-                alt="Miro"
-                width={140}
-                height={50}
-                priority
-                className="object-contain"
-              /> */}
-            </div>
+            <motion.a
+             href="#"
+              initial="hidden"
+              animate="visible"
+              className="flex items-center h-full text-3xl font-extrabold tracking-widest overflow-hidden"
+            >
+              {"MIRO".split("").map((letter, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{
+                    delay: index * 0.08,
+                    duration: 0.5,
+                    ease: "easeOut",
+                  }}
+                  className="inline-block text-gray-900"
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </motion.a>
 
             {/* DESKTOP MENU */}
             <div className="hidden lg:flex items-center gap-10">
