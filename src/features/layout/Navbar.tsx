@@ -25,7 +25,7 @@ export function Navbar() {
 
   // Scroll lock when drawer open
   useEffect(() => {
-    document.body.style.overflow = mobileMenuOpen ? "hidden" : "auto";
+    // document.body.style.overflow = mobileMenuOpen ? "hidden" : "auto";
   }, [mobileMenuOpen]);
 
   const menuItems = [

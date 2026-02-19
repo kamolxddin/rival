@@ -47,7 +47,9 @@ export function Hero() {
               <a
                 href="#products"
                 className="px-8 py-4 border border-white rounded-lg text-center w-full sm:w-auto"
-              ></a>
+              >
+                Bizning loyihalar
+              </a>
             </div>
           </div>
         </div>

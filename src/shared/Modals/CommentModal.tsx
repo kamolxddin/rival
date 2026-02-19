@@ -110,7 +110,6 @@ export function CommentModal({ isOpen, onClose }: CommentModalProps) {
             </button>
           </>
         )}
-
       </div>
     </div>
   )
