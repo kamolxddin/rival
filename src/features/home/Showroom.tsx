@@ -1,102 +1,128 @@
-import { motion } from 'motion/react';
-import { Play } from 'lucide-react';
-import { useState } from 'react';
-import { useLanguage } from '@/context/LanguageContext';
+'use client'
 
+import { useState, useRef } from 'react'
+import { useInView } from 'framer-motion'
+import { Play } from 'lucide-react'
+import { useLanguage } from '@/context/LanguageContext'
+import { useEffect } from 'react'
+
+/* ---------- Counter Hook ---------- */
+function useCounter(end: number, start: boolean) {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!start) return
+
+    let current = 0
+    const duration = 1800
+    const step = end / (duration / 16)
+
+    const timer = setInterval(() => {
+      current += step
+      if (current >= end) {
+        setCount(end)
+        clearInterval(timer)
+      } else {
+        setCount(Math.floor(current))
+      }
+    }, 16)
+
+    return () => clearInterval(timer)
+  }, [end, start])
+
+  return count
+}
+
+/* ---------- Component ---------- */
 export function Showroom() {
-  const { t} = useLanguage();
-  const [isPlaying, setIsPlaying] = useState(false);
+  const { t } = useLanguage()
+  const [isPlaying, setIsPlaying] = useState(false)
 
-  const handlePlayClick = () => {
-    setIsPlaying(true);
-    // In a real application, you would integrate with a video player API
-  };
+  const sectionRef = useRef(null)
+  const inView = useInView(sectionRef, { once: true })
+
+  const projects = useCounter(500, inView)
+  const clients = useCounter(1000, inView)
+  const years = useCounter(4, inView)
 
   return (
-    <section id='showroom' className="py-16 sm:py-24 bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl sm:text-4xl mb-4">{t('showroom.title')}</h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+    <section
+      id="showroom"
+      ref={sectionRef}
+      className="py-20 bg-gray-900 text-white"
+    >
+      <div className="max-w-7xl mx-auto px-4">
+
+        {/* TITLE */}
+        <div className="text-center mb-14">
+          <h2 className="text-3xl sm:text-4xl mb-4">
+            {t('showroom.title')}
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
             {t('showroom.subtitle')}
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative max-w-4xl mx-auto"
-        >
-          {/* Video Player Container */}
-          <div className="relative aspect-video bg-gray-800 rounded-2xl overflow-hidden shadow-2xl">
+        {/* VIDEO */}
+        <div className="w-full max-w-[900px] mx-auto">
+          <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl bg-black">
+
             {!isPlaying ? (
-              <>
-                {/* Video Thumbnail/Placeholder */}
-                <div className="absolute inset-0 bg-linear-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-                  <div className="text-center">
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={handlePlayClick}
-                      className="w-20 h-20 sm:w-24 sm:h-24 bg-white text-gray-900 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow mb-4 mx-auto"
-                      aria-label="Video ijro etish"
-                    >
-                      <Play className="w-10 h-10 sm:w-12 sm:h-12 ml-1" fill="currentColor" />
-                    </motion.button>
-                    <p className="text-lg sm:text-xl text-white font-medium">
-                      {t('showroom.watchVideo')}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Decorative Elements */}
-                <div className="absolute top-8 left-8 w-24 h-24 bg-white/10 rounded-full blur-2xl" />
-                <div className="absolute bottom-8 right-8 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
-              </>
-            ) : (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-                  title="Showroom Video"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
+                <button
+                  onClick={() => setIsPlaying(true)}
+                  className="w-24 h-24 bg-white text-gray-900 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"
+                >
+                  <Play className="w-12 h-12 ml-1" fill="currentColor" />
+                </button>
               </div>
+            ) : (
+              <video
+                src="/showroom.mp4"
+                controls
+                autoPlay
+                playsInline
+                preload="auto"
+                className="w-full h-full object-contain bg-black"
+              />
             )}
+
+          </div>
+        </div>
+
+        {/* COUNTER CARDS */}
+        <div className="mt-16 w-full max-w-[900px] mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+          <div className="bg-gray-800 rounded-xl p-6 h-[140px] flex flex-col justify-center text-center">
+            <p className="text-4xl font-bold mb-2">
+              {projects}+
+            </p>
+            <p className="text-gray-400">
+              {t('showroom.projects')}
+            </p>
           </div>
 
-          {/* Video Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center"
-          >
-            <div className="bg-gray-800 rounded-xl p-6">
-              <p className="text-3xl sm:text-4xl font-bold mb-2">500+</p>
-              <p className="text-gray-400">{t('showroom.projects')}</p>
-            </div>
-            <div className="bg-gray-800 rounded-xl p-6">
-              <p className="text-3xl sm:text-4xl font-bold mb-2">1000+</p>
-              <p className="text-gray-400">{t('showroom.clients')}</p>
-            </div>
-            <div className="bg-gray-800 rounded-xl p-6">
-              <p className="text-3xl sm:text-4xl font-bold mb-2">4+ {t('showroom.years')}</p>
-              <p className="text-gray-400">{t('showroom.experience')}</p>
-            </div>
-          </motion.div>
-        </motion.div>
+          <div className="bg-gray-800 rounded-xl p-6 h-[140px] flex flex-col justify-center text-center">
+            <p className="text-4xl font-bold mb-2">
+              {clients}+
+            </p>
+            <p className="text-gray-400">
+              {t('showroom.clients')}
+            </p>
+          </div>
+
+          <div className="bg-gray-800 rounded-xl p-6 h-[140px] flex flex-col justify-center text-center">
+            <p className="text-4xl font-bold mb-2">
+              {years}+ {t('showroom.years')}
+            </p>
+            <p className="text-gray-400">
+              {t('showroom.experience')}
+            </p>
+          </div>
+
+        </div>
+
       </div>
     </section>
-  );
+  )
 }

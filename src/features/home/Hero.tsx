@@ -9,14 +9,16 @@ export function Hero() {
   const { t } = useLanguage()
   const [orderFormOpen, setOrderFormOpen] = useState(false)
 
+  
+
   return (
     <>
-    <section className="relative w-full min-h-screen overflow-hidden text-white">
+    <section className="relative w-full min-h-screen overflow-hidden isolate text-white">
 
   {/* Background */}
   <div className="absolute inset-0 -z-10">
     <Image
-      src="/slidekitchen1.webp"
+      src="/homepageimage.webp"
       alt="Zamonaviy yotoqxona dizayni"
       fill
       priority
@@ -57,7 +59,7 @@ export function Hero() {
 
 </section>
 
-
+           
       <OrderForm
         isOpen={orderFormOpen}
         onClose={() => setOrderFormOpen(false)}
