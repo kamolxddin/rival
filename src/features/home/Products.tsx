@@ -15,7 +15,7 @@ const Products = () => {
     const cardWidth = sliderRef.current.offsetWidth * 0.9;
 
     sliderRef.current.scrollBy({
-      left: direction === "left" ? -cardWidth : cardWidth,
+      left: direction === "left" ?   -cardWidth : cardWidth,
       behavior: "smooth",
     });
   };

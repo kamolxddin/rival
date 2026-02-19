@@ -20,7 +20,7 @@ export function Hero() {
       alt="Zamonaviy yotoqxona dizayni"
       fill
       priority
-      sizes="100vw"
+      sizes="100%"
       className="object-cover object-center"
     />
     <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/50 to-black/30" />
