@@ -3,11 +3,16 @@
 import { X, Star, CheckCircle } from 'lucide-react'
 import { useState } from 'react'
 
-export function CommentModal({ isOpen, onClose }) {
-  const [rating, setRating] = useState(0)
-  const [comment, setComment] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(false)
+interface CommentModalProps {
+  isOpen: boolean
+  onClose: () => void
+}
+
+export function CommentModal({ isOpen, onClose }: CommentModalProps) {
+  const [rating, setRating] = useState<number>(0)
+  const [comment, setComment] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(false)
+  const [success, setSuccess] = useState<boolean>(false)
 
   if (!isOpen) return null
 
@@ -50,10 +55,8 @@ export function CommentModal({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-
       <div className="bg-white w-full max-w-lg rounded-2xl p-6 relative transition-all duration-300">
 
-        {/* Close */}
         <button
           onClick={onClose}
           className="absolute right-4 top-4 text-gray-500 hover:text-black transition"
@@ -61,9 +64,8 @@ export function CommentModal({ isOpen, onClose }) {
           <X />
         </button>
 
-        {/* SUCCESS STATE */}
         {success ? (
-          <div className="flex flex-col items-center justify-center py-16 text-center animate-fadeIn">
+          <div className="flex flex-col items-center justify-center py-16 text-center">
             <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
             <h2 className="text-xl font-semibold mb-2">
               Baholaganingiz uchun rahmat!

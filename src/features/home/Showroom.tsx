@@ -56,7 +56,7 @@ export function Showroom() {
         {/* TITLE */}
         <div className="text-center mb-14">
           <h2 className="text-3xl sm:text-4xl mb-4">
-            {t('showroom.title')}
+              {t('showroom.title')}
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
             {t('showroom.subtitle')}
