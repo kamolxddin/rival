@@ -1,37 +1,8 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { useInView } from "framer-motion";
 import { Play } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { useEffect } from "react";
-
-/* ---------- Counter Hook ---------- */
-function useCounter(end: number, start: boolean) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!start) return;
-
-    let current = 0;
-    const duration = 1800;
-    const step = end / (duration / 16);
-
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= end) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(current));
-      }
-    }, 16);
-
-    return () => clearInterval(timer);
-  }, [end, start]);
-
-  return count;
-}
 
 /* ---------- Component ---------- */
 export function Showroom() {
@@ -41,16 +12,14 @@ export function Showroom() {
   const sectionRef = useRef(null);
 
   return (
-    <section
-      id="showroom"
-      ref={sectionRef}
-      className="section-soft py-20 bg-gray-900 text-black"
-    >
+    <section id="showroom" ref={sectionRef} className=" py-20 text-black">
       <div className="max-w-7xl mx-auto px-4">
         {/* TITLE */}
         <div className="text-center mb-14">
-          <h2 className="text-3xl sm:text-4xl mb-4">{t("showroom.title")}</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight mb-6">
+            {t("showroom.title")}
+          </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             {t("showroom.subtitle")}
           </p>
         </div>
@@ -74,7 +43,7 @@ export function Showroom() {
                 autoPlay
                 playsInline
                 preload="auto"
-                className="w-full h-full object-contain bg-black"
+                className="w-full h-full object-contain bg-emerald-600"
               />
             )}
           </div>

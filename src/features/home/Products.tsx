@@ -11,10 +11,12 @@ const Products = () => {
       <div className="max-w-7xl mx-auto px-4">
         {/* TITLE */}
         <div className="text-center mb-14">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-3">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight mb-6">
             {t("products.title")}
           </h2>
-          <p className="text-gray-600">{t("products.subtitle")}</p>
+          <p className=" text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            {t("products.subtitle")}
+          </p>
         </div>
 
         {/* GRID */}

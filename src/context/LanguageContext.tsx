@@ -31,17 +31,17 @@ const translations = {
     "products.title": "Mahsulotlarimiz",
     "products.subtitle": "Amalga oshirilgan ishlarimizdan namunalar",
     // Products Data
-    "product.1.name": "Zamonaviy Yotoqxona",
+    "product.1.name": "Premium oshxona",
     "product.1.desc": "Yuqori sifatli va zamonaviy dizayn",
-    "product.1.color": "Kulrang",
+    "product.1.color": "Oq",
 
-    "product.2.name": "Premium Oshxona",
+    "product.2.name": "O'zgacha Oshxona",
     "product.2.desc": "Funksional va chiroyli interyer",
-    "product.2.color": "Oq",
+    "product.2.color": "Yog‘och rang",
 
-    "product.3.name": "L-shaklli Oshxona",
+    "product.3.name": "Zamonaviy Oshxona",
     "product.3.desc": "Keng va qulay loyiha",
-    "product.3.color": "Yog‘och rang",
+    "product.3.color": "Jigarrang",
 
     // About
     "about.title": "Biz haqimizda",

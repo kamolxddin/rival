@@ -18,7 +18,7 @@ export function LoadingScreen() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.15 }}
           transition={{ duration: 1 }}
-          className="absolute w-80 h-80 rounded-full bg-emerald-500 blur-3xl"
+          className="absolute w-80 h-80 rounded-full bg-emerald-900 blur-3xl"
         />
 
         {/* Logo Image */}
