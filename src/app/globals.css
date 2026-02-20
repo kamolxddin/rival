@@ -14,12 +14,14 @@
     }
 }
 
-/* ROOT */
+
 :root {
-    /* --header-bg-color: #fff; */
-    /* --main-bg-color: #fff; */
-    /* --main-text-color: #fff; */
+    --brand-green: #0f3d2e;
+  --brand-green-2: #145c42;
+  --brand-green-soft: #e8f3ef;
 }
+
+
 
 html {
     box-sizing: border-box;

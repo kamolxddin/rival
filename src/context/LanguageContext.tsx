@@ -18,16 +18,17 @@ const translations = {
     "nav.about": "Biz haqimizda",
     "nav.products": "Mahsulotlarimiz",
     "nav.showroom": "Showroom",
-    "nav.order": "Buyurtma berish",
+    "nav.order": "O‘lcham olish",
 
     // Hero
     "hero.title": "Sizning orzuingizdagi mebellar",
     "hero.subtitle":
       "Biz yuqori sifatli mebel va ichki dizayn xizmatlari bilan uyingizni orzularingizdagi joyga aylantiramiz. Har bir loyihani maxsus e'tibor va professional yondashuv bilan amalga oshiramiz.",
-    "hero.cta": "Buyurtma berish",
+    "hero.cta": "O‘lcham olish",
+    "hero.projects": "Bizning mahsulotlar",
 
     // Products
-    "products.title": "Bizning loyihalarimiz",
+    "products.title": "Mahsulotlarimiz",
     "products.subtitle": "Amalga oshirilgan ishlarimizdan namunalar",
     // Products Data
     "product.1.name": "Zamonaviy Yotoqxona",
@@ -62,23 +63,6 @@ const translations = {
     "about.step5.desc":
       "Express tezlikda buyurtmalarni qabul qilamiz. Standart buyurtmalar 15-20 kun ichida, shoshilinch buyurtmalar esa 7-10 kun ichida tayyor bo'ladi.",
 
-    // Why Choose Us
-    "why.title": "Nima uchun bizni tanlaysiz?",
-    "why.subtitle":
-      "Mijozlarimiz bizni tanlagani uchun bir qancha sabablari bor",
-    "why.advantage1.title": "Qulaylik va funksionallik",
-    "why.advantage1.desc":
-      "Har bir mebel mahsuloti kundalik hayotingizni osonlashtirish uchun mo'ljallangan. Zamonaviy texnologiyalar va ergonomik dizaynlardan foydalanib, sizga eng qulay yechimlarni taklif etamiz.",
-    "why.advantage2.title": "Yuqori sifat va ishonchlilik",
-    "why.advantage2.desc":
-      "Materiallar tanlashdan tortib, yakuniy mahsulotgacha bo'lgan barcha bosqichlar qat'iy nazorat ostida amalga oshiriladi. Faqat sertifikatlangan va ekologik toza materiallar ishlatiladi.",
-    "why.advantage3.title": "Tezkor va chidamli",
-    "why.advantage3.desc":
-      "Zamonaviy ishlab chiqarish uskunalari yordamida buyurtmalaringizni qisqa muddatda bajaramiz. Mahsulotlarimiz uzoq yillar xizmat qilish uchun mo'ljallangan va yuqori bardoshlikka ega.",
-    "why.advantage4.title": "Arzon va hamyonbop",
-    "why.advantage4.desc":
-      "Sifatli mebel har kim uchun mavjud bo'lishi kerak deb hisoblaymiz. Shuning uchun ishlab chiqaruvchi sifatida to'g'ridan-to'g'ri mijozlarga xizmat ko'rsatib, eng mos narxlarni taklif etamiz.",
-
     // Showroom
     "showroom.title": "Bizning showroom",
     "showroom.subtitle":
@@ -99,51 +83,40 @@ const translations = {
       "2020 yildan buyon oshxona mebellari, shkaflar va turli xil interyer mebellarini ishlab chiqaramiz.",
 
     // Form
-    "form.title": "Buyurtma berish",
+    // Form
+    "form.title": "Bepul o‘lcham olish",
     "form.firstName": "Ism",
     "form.lastName": "Familiya",
-    "form.birthDate": "Tug'ilgan sana",
-    "form.day": "Kun",
-    "form.month": "Oy",
-    "form.year": "Yil",
-    "form.region": "Viloyat/Shahar",
+    "form.region": "Viloyat / Shahar",
     "form.phone": "Telefon raqam",
-    "form.address": "Manzil",
-    "form.length": "Uzunlik (dilina)",
-    "form.width": "Kenglik (shirina)",
-    "form.thickness": "Qalinlik (tolshina)",
-    "form.color": "Rang",
-    "form.color.gray": "Kulrang",
-    "form.color.black": "Qora",
-    "form.color.white": "Oq",
-    "form.material": "Material",
+    "form.length": "Uzunlik (mm)",
+    "form.width": "Kenglik (mm)",
+    "form.thickness": "Qalinlik (mm)",
+    "form.color": "Rang tanlang",
+    "form.material": "Material tanlang",
     "form.material.ldsp": "LDSP",
-    "form.material.lmdf": "LMDF",
     "form.material.acrylic": "Akril",
-    "form.myOrders": "Mening buyurtmalarim",
-    "form.orderName": "Buyurtma nomi",
-    "form.payment": "To'lov turi",
-    "form.payment.cash": "Naqd",
-    "form.payment.card": "Plastik",
-    "form.submit": "Yuborish",
+    "form.wish": "Qanday oshxona xohlaysiz?",
+    "form.submit": "Zayavka qoldirish",
+    "form.success": "Zayavka yuborildi!",
     "form.close": "Yopish",
-    "form.cm": "sm",
   },
   ru: {
     // Navbar
     "nav.about": "О нас",
     "nav.products": "Наши продукты",
     "nav.showroom": "Контакты",
-    "nav.order": "Заказать",
+    "nav.order": "Замер",
 
     // Hero
     "hero.title": "Мебель вашей мечты",
     "hero.subtitle":
       "Мы превратим ваш дом в место вашей мечты с помощью высококачественной мебели и услуг дизайна интерьера. Каждый проект выполняем с особым вниманием и профессиональным подходом.",
-    "hero.cta": "Заказать",
+    "hero.cta": "Замер",
+    "hero.projects": "Наши продукты",
 
     // Products
-    "products.title": "Наши проекты",
+    "products.title": "Наши продукты",
     "products.subtitle": "Примеры выполненных работ",
     // Products Data
     "product.1.name": "Современная спальня",
@@ -178,23 +151,6 @@ const translations = {
     "about.step5.desc":
       "Мы принимаем заказы с экспресс-скоростью. Стандартные заказы готовы за 15-20 дней, срочные заказы - за 7-10 дней.",
 
-    // Why Choose Us
-    "why.title": "Почему выбирают нас?",
-    "why.subtitle":
-      "Есть несколько причин, по которым наши клиенты выбирают нас",
-    "why.advantage1.title": "Удобство и функциональность",
-    "why.advantage1.desc":
-      "Каждое мебельное изделие предназначено для облегчения вашей повседневной жизни. Используя современные технологии и эргономичный дизайн, мы предлагаем вам самые удобные решения.",
-    "why.advantage2.title": "Высокое качество и надежность",
-    "why.advantage2.desc":
-      "Все этапы от выбора материалов до конечного продукта выполняются под строгим контролем. Используются только сертифицированные и экологически чистые материалы.",
-    "why.advantage3.title": "Быстро и долговечно",
-    "why.advantage3.desc":
-      "С помощью современного производственного оборудования мы выполняем ваши заказы в короткие сроки. Наша продукция предназначена для многолетней службы и обладает высокой износостойкостью.",
-    "why.advantage4.title": "Доступно и недорого",
-    "why.advantage4.desc":
-      "Мы считаем, что качественная мебель должна быть доступна каждому. Поэтому, как производитель, мы напрямую обслуживаем клиентов и предлагаем самые подходящие цены.",
-
     // Showroom
     "showroom.title": "Наш шоу-рум",
     "showroom.subtitle":
@@ -215,35 +171,22 @@ const translations = {
       "С 2020 года производим кухонную мебель, шкафы и интерьерные решения.",
 
     // Form
-    "form.title": "Оформить заказ",
+    "form.title": "Бесплатный замер",
     "form.firstName": "Имя",
     "form.lastName": "Фамилия",
-    "form.birthDate": "Дата рождения",
-    "form.day": "День",
-    "form.month": "Месяц",
-    "form.year": "Год",
-    "form.region": "Область/Город",
+    "form.region": "Область / Город",
     "form.phone": "Номер телефона",
-    "form.address": "Адрес",
-    "form.length": "Длина",
-    "form.width": "Ширина",
-    "form.thickness": "Толщина",
-    "form.color": "Цвет",
-    "form.color.gray": "Серый",
-    "form.color.black": "Черный",
-    "form.color.white": "Белый",
-    "form.material": "Материал",
+    "form.length": "Длина (мм)",
+    "form.width": "Ширина (мм)",
+    "form.thickness": "Толщина (мм)",
+    "form.color": "Выберите цвет",
+    "form.material": "Выберите материал",
     "form.material.ldsp": "ЛДСП",
-    "form.material.lmdf": "ЛМДФ",
     "form.material.acrylic": "Акрил",
-    "form.myOrders": "Мои заказы",
-    "form.orderName": "Название заказа",
-    "form.payment": "Способ оплаты",
-    "form.payment.cash": "Наличные",
-    "form.payment.card": "Карта",
-    "form.submit": "Отправить",
+    "form.wish": "Какую кухню вы хотите?",
+    "form.submit": "Оставить заявку",
+    "form.success": "Заявка отправлена!",
     "form.close": "Закрыть",
-    "form.cm": "см",
   },
 } as const;
 

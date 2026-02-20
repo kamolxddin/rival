@@ -18,7 +18,7 @@ const Products = () => {
         </div>
 
         {/* GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
           {products.map((product) => (
             <div
               key={product.id}
@@ -34,7 +34,7 @@ const Products = () => {
               </div>
 
               {/* CONTENT */}
-              <div className="p-6">
+              <div className="p-6 bg-white text-gray-900 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition">
                 <h3 className="text-xl font-semibold mb-2 text-gray-900">
                   {t(`product.${product.id}.name` as any)}
                 </h3>

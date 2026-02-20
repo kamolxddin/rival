@@ -1,65 +1,45 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useLanguage } from "@/context/LanguageContext";
+import Image from "next/image";
 
 export function LoadingScreen() {
-  const { language } = useLanguage();
-
   return (
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.6 }}
-      className="fixed inset-0 bg-black z-50 flex items-center justify-center"
+      transition={{ duration: 0.7 }}
+      className="fixed inset-0 bg-white z-50 flex items-center justify-center"
     >
-      <div className="flex flex-col items-center gap-10">
-        {/* LOGO TEXT ANIMATION */}
-        <div className="relative overflow-hidden">
-          <motion.h1
-            initial={{ y: 60, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-5xl md:text-6xl font-extrabold tracking-widest text-white"
-          >
-            MIRO
-          </motion.h1>
+      <div className="relative flex items-center justify-center">
 
-          {/* Light Sweep Effect */}
-          <motion.div
-            initial={{ x: "-100%" }}
-            animate={{ x: "200%" }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-          />
-        </div>
-
-        {/* PROGRESS BAR */}
-        <div className="w-48 h-[2px] bg-white/20 overflow-hidden">
-          <motion.div
-            animate={{ x: ["-100%", "100%"] }}
-            transition={{
-              duration: 1.2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="h-full w-1/2 bg-white"
-          />
-        </div>
-
-        {/* TEXT */}
-        <motion.p
+        {/* Soft Emerald Glow */}
+        <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.7 }}
-          transition={{ delay: 0.4 }}
-          className="text-gray-300 text-sm tracking-wide"
+          animate={{ opacity: 0.15 }}
+          transition={{ duration: 1 }}
+          className="absolute w-80 h-80 rounded-full bg-emerald-500 blur-3xl"
+        />
+
+        {/* Logo Image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{
+            duration: 0.9,
+            ease: [0.16, 1, 0.3, 1], // premium cubic
+          }}
         >
-          {language === "uz" ? "Yuklanmoqda..." : "Загрузка..."}
-        </motion.p>
+          <Image
+            src="/logo.webp"
+            alt="Miro by Rival"
+            width={200}
+            height={80}
+            priority
+            className="object-contain"
+          />
+        </motion.div>
+
       </div>
     </motion.div>
   );

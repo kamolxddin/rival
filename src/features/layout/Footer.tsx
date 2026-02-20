@@ -17,7 +17,7 @@ export function Footer() {
 
             {/* 1. Company Info */}
             <div className="space-y-4">
-              <h3 className="text-white text-2xl font-semibold">Rival Uz</h3>
+              <h3 className="text-white text-2xl font-semibold">Miro</h3>
               <p className="text-sm leading-relaxed">
                 {t("footer.description")}
               </p>

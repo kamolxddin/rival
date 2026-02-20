@@ -10,7 +10,7 @@ export function About() {
   return (
     <>
       {/* ===== COMPANY INTRO ===== */}
-      <section id="about" className="relative py-24 bg-white overflow-hidden">
+      <section id="about" className="section-white relative py-24 bg-white overflow-hidden">
         {/* subtle background */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white" />
 
@@ -64,62 +64,6 @@ export function About() {
                     <p className="text-gray-600 leading-relaxed">
                       {t(item.descKey as any)}
                     </p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== WHY CHOOSE US ===== */}
-      <section className="py-24 bg-gray-900 text-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-              {t("why.title")}
-            </h2>
-
-            <div className="w-20 h-1 bg-white mx-auto mb-6" />
-
-            <p className="text-gray-300 max-w-3xl mx-auto">
-              {t("why.subtitle")}
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-10">
-            {advantagesData.map((item, index) => {
-              const Icon = item.icon;
-
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-white text-gray-900 rounded-full flex items-center justify-center">
-                      <Icon className="w-6 h-6" />
-                    </div>
-
-                    <div>
-                      <h3 className="text-xl font-semibold mb-3">
-                        {t(item.titleKey as any)}
-                      </h3>
-
-                      <p className="text-gray-300 leading-relaxed">
-                        {t(item.descKey as any)}
-                      </p>
-                    </div>
                   </div>
                 </motion.div>
               );

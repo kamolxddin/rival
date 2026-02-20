@@ -3,7 +3,7 @@
 import { Menu, X, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-// import Image from "next/image";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { OrderForm } from "@/shared/Modals/OrderForm";
 
@@ -42,31 +42,27 @@ export function Navbar() {
         ${scrolled ? "bg-white/80 backdrop-blur-lg shadow-md" : "bg-white/95"}`}
       >
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between">
             {/* LOGO */}
             <motion.a
-             href="#"
-              initial="hidden"
-              animate="visible"
-              className="flex items-center h-full text-3xl font-extrabold tracking-widest overflow-hidden"
+              href="#"
+              initial={{ opacity: 0, y: -15, scale: 0.96, filter: "blur(6px)" }}
+              animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+              transition={{
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="relative inline-block"
             >
-              {"MIRO".split("").map((letter, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ y: 40, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{
-                    delay: index * 0.08,
-                    duration: 0.5,
-                    ease: "easeOut",
-                  }}
-                  className="inline-block text-gray-900"
-                >
-                  {letter}
-                </motion.span>
-              ))}
+              <Image
+                src="/logo.webp"
+                alt="Miro by Rival"
+                width={140}
+                height={50}
+                priority
+                className="object-contain"
+              />
             </motion.a>
-
             {/* DESKTOP MENU */}
             <div className="hidden lg:flex items-center gap-10">
               {menuItems.map((item) => (
