@@ -16,7 +16,7 @@ export function Hero() {
         {/* Background */}
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/product1.webp"
+            src="/product3.webp"
             alt="Zamonaviy oshxona dizayni"
             fill
             priority
@@ -58,7 +58,7 @@ export function Hero() {
             >
               <button
                 onClick={() => setOrderFormOpen(true)}
-                className="px-8 py-4 bg-white text-gray-900 rounded-lg w-full sm:w-auto font-semibold hover:bg-gray-100 transition"
+                className="px-8 py-4 bg-[#0C5C3F] text-white rounded-lg w-full sm:w-auto font-semibol"
               >
                 {t("hero.cta")}
               </button>

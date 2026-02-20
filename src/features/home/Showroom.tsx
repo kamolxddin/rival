@@ -16,10 +16,10 @@ export function Showroom() {
       <div className="max-w-7xl mx-auto px-4">
         {/* TITLE */}
         <div className="text-center mb-14">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0C5C3F] tracking-tight mb-6">
             {t("showroom.title")}
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-black font-semibold max-w-3xl mx-auto leading-relaxed">
             {t("showroom.subtitle")}
           </p>
         </div>

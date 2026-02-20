@@ -11,15 +11,30 @@ interface Props {
 }
 
 export function OrderForm({ isOpen, onClose }: Props) {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
   const [submitted, setSubmitted] = useState(false);
-  const [colorOpen, setColorOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
 
   const colors = [
-    { nameUz: "Kulrang", nameRu: "Серый", value: "#D1D5DB" },
-    { nameUz: "Yog‘och", nameRu: "Деревянный", value: "#C8A97E" },
-    { nameUz: "Oq", nameRu: "Белый", value: "#FFFFFF" },
+    {
+      key: "grey",
+      name: "Kulrang",
+      value: "#D1D5DB",
+      image: "/seriyKamen.webp",
+    },
+    {
+      key: "wood",
+      name: "Yog‘och",
+      value: "#C8A97E",
+      image: "/dubVotan.webp",
+    },
+    {
+      key: "white",
+      name: "Oq",
+      value: "#FFFFFF",
+      image: "/akriyBeliy.webp",
+    },
   ];
 
   const [form, setForm] = useState({
@@ -42,38 +57,41 @@ export function OrderForm({ isOpen, onClose }: Props) {
     };
   }, [isOpen]);
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >,
-  ) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  /* ---------- VALIDATORS ---------- */
+
+  const textOnly = (value: string) => value.replace(/[^A-Za-zА-Яа-яЁё\s]/g, "");
+
+  const numberOnly = (value: string) => value.replace(/[^0-9]/g, "");
+
+  const dimensionOnly = (value: string) => {
+    const clean = value.replace(/[^0-9]/g, "");
+    return clean === "" ? "" : Math.max(1, Number(clean)).toString();
   };
+
+  /* ---------- SUBMIT ---------- */
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const now = new Date();
-    const formattedDate = now.toLocaleString(
-      language === "uz" ? "uz-UZ" : "ru-RU",
-    );
+    const formattedDate = now.toLocaleString("uz-UZ");
 
     const message = `
-🪑 ${language === "uz" ? "YANGI ZAYAVKA" : "НОВАЯ ЗАЯВКА"}
+🪑 YANGI BUYURTMA
 
-👤 ${t("form.firstName")}: ${form.firstName} ${form.lastName}
-📍 ${t("form.region")}: ${form.region}
-📞 ${t("form.phone")}: ${form.phone}
+👤 Ism: ${form.firstName} ${form.lastName}
+📍 Hudud: ${form.region}
+📞 Telefon: ${form.phone}
 
-📏 ${language === "uz" ? "O‘lchamlar" : "Размеры"}:
-• ${t("form.length")}: ${form.length}
-• ${t("form.width")}: ${form.width}
-• ${t("form.thickness")}: ${form.thickness}
+📏 O‘lchamlar:
+• Uzunlik: ${form.length} mm
+• Kenglik: ${form.width} mm
+• Qalinlik: ${form.thickness} mm
 
-🎨 ${t("form.color")}: ${form.color}
-🧱 ${t("form.material")}: ${form.material}
+🎨 Rang: ${form.color}
+🧱 Material: ${form.material}
 
-✨ ${t("form.wish")}:
+✨ Izoh:
 ${form.wish}
 
 🕒 ${formattedDate}
@@ -83,18 +101,38 @@ ${form.wish}
       const res = await fetch("/api/telegram", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({
+          message,
+          image: selectedImage,
+        }),
       });
 
       if (res.ok) {
         setSubmitted(true);
+
+        // CLEAR FORM
+        setForm({
+          firstName: "",
+          lastName: "",
+          region: "",
+          phone: "",
+          length: "",
+          width: "",
+          thickness: "",
+          color: "",
+          material: "",
+          wish: "",
+        });
+
+        setSelectedImage("");
+
         setTimeout(() => {
           setSubmitted(false);
           onClose();
         }, 2000);
       }
     } catch (error) {
-      console.log("Xatolik:", error);
+      console.log(error);
     }
   };
 
@@ -102,167 +140,209 @@ ${form.wish}
     <AnimatePresence>
       {isOpen && (
         <>
+          {/* BACKDROP */}
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
+            animate={{ opacity: 0.6 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black z-40"
             onClick={onClose}
           />
 
+          {/* MODAL */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 30 }}
-            transition={{ duration: 0.25 }}
+            exit={{ opacity: 0, y: 40 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
-            <div className="relative bg-white w-full max-w-2xl rounded-2xl shadow-2xl flex flex-col max-h-[90vh]">
+            <div className="bg-gray-700 text-white w-full max-w-2xl rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto">
               {/* HEADER */}
-              <div className="sticky top-0 bg-white z-10 flex items-center justify-between p-6 border-b">
-                <h2 className="text-xl font-semibold">{t("form.title")}</h2>
-                <button
-                  onClick={onClose}
-                  className="p-2 rounded-full hover:bg-gray-100 transition"
-                >
-                  <X size={20} />
+              <div className="flex justify-between items-center p-6 border-b border-white/20">
+                <h2 className="text-xl font-semibold">Bepul o‘lcham olish</h2>
+                <button onClick={onClose}>
+                  <X />
                 </button>
               </div>
 
-              <div className="overflow-y-auto p-6">
+              <div className="p-6">
                 {submitted ? (
-                  <div className="flex flex-col items-center justify-center py-20 text-center">
-                    <CheckCircle size={70} className="text-green-500 mb-4" />
-                    <h3 className="text-xl font-semibold">
-                      {t("form.success")}
-                    </h3>
+                  <div className="flex flex-col items-center py-16">
+                    <CheckCircle size={60} />
+                    <p className="mt-4">Buyurtma yuborildi</p>
                   </div>
                 ) : (
                   <form
                     onSubmit={handleSubmit}
                     className="grid grid-cols-1 md:grid-cols-2 gap-4"
                   >
+                    {/* TEXT */}
                     <input
-                      name="firstName"
-                      placeholder={t("form.firstName")}
-                      required
-                      onChange={handleChange}
                       className="input"
+                      placeholder="Ism"
+                      value={form.firstName}
+                      onChange={(e) =>
+                        setForm({
+                          ...form,
+                          firstName: textOnly(e.target.value),
+                        })
+                      }
+                      required
                     />
 
                     <input
-                      name="lastName"
-                      placeholder={t("form.lastName")}
-                      required
-                      onChange={handleChange}
                       className="input"
+                      placeholder="Familiya"
+                      value={form.lastName}
+                      onChange={(e) =>
+                        setForm({
+                          ...form,
+                          lastName: textOnly(e.target.value),
+                        })
+                      }
+                      required
                     />
 
                     <input
-                      name="region"
-                      placeholder={t("form.region")}
-                      required
-                      onChange={handleChange}
                       className="input md:col-span-2"
+                      placeholder="Viloyat / Shahar"
+                      value={form.region}
+                      onChange={(e) =>
+                        setForm({
+                          ...form,
+                          region: textOnly(e.target.value),
+                        })
+                      }
+                      required
                     />
 
                     <input
-                      name="phone"
-                      placeholder={t("form.phone")}
-                      required
-                      onChange={handleChange}
                       className="input md:col-span-2"
+                      placeholder="Telefon"
+                      value={form.phone}
+                      onChange={(e) =>
+                        setForm({
+                          ...form,
+                          phone: numberOnly(e.target.value),
+                        })
+                      }
+                      required
                     />
 
+                    {/* DIMENSIONS */}
                     <input
-                      type="number"
-                      name="length"
-                      placeholder={t("form.length")}
-                      required
-                      onChange={handleChange}
                       className="input"
+                      placeholder="Uzunlik (mm)"
+                      value={form.length}
+                      onChange={(e) =>
+                        setForm({
+                          ...form,
+                          length: dimensionOnly(e.target.value),
+                        })
+                      }
+                      required
                     />
 
                     <input
-                      type="number"
-                      name="width"
-                      placeholder={t("form.width")}
-                      required
-                      onChange={handleChange}
                       className="input"
+                      placeholder="Kenglik (mm)"
+                      value={form.width}
+                      onChange={(e) =>
+                        setForm({
+                          ...form,
+                          width: dimensionOnly(e.target.value),
+                        })
+                      }
+                      required
                     />
 
                     <input
-                      type="number"
-                      name="thickness"
-                      placeholder={t("form.thickness")}
-                      required
-                      onChange={handleChange}
                       className="input md:col-span-2"
+                      placeholder="Qalinlik (mm)"
+                      value={form.thickness}
+                      onChange={(e) =>
+                        setForm({
+                          ...form,
+                          thickness: dimensionOnly(e.target.value),
+                        })
+                      }
+                      required
                     />
 
-                    {/* COLOR PANEL */}
-                    <div className="md:col-span-2 relative">
-                      <button
-                        type="button"
-                        onClick={() => setColorOpen(!colorOpen)}
-                        className="input w-full text-left"
-                      >
-                        {form.color || t("form.color")}
-                      </button>
+                    {/* COLORS */}
+                    <div className="md:col-span-2">
+                      <p className="mb-3">Rang tanlang</p>
 
-                      {colorOpen && (
-                        <div className="absolute z-20 mt-2 bg-white border rounded-xl shadow-lg p-4 flex gap-4">
-                          {colors.map((color) => {
-                            const name =
-                              language === "uz" ? color.nameUz : color.nameRu;
+                      <div className="flex gap-4">
+                        {colors.map((color) => (
+                          <button
+                            key={color.key}
+                            type="button"
+                            onClick={() => {
+                              setForm({
+                                ...form,
+                                color: color.name,
+                              });
+                              setSelectedImage(color.image);
+                            }}
+                            className="w-10 h-10 rounded-full border"
+                            style={{
+                              backgroundColor: color.value,
+                            }}
+                          />
+                        ))}
+                      </div>
 
-                            return (
-                              <button
-                                key={name}
-                                type="button"
-                                onClick={() => {
-                                  setForm({ ...form, color: name });
-                                  setColorOpen(false);
-                                }}
-                                className={`w-10 h-10 rounded-full border-2 transition ${
-                                  form.color === name
-                                    ? "border-black scale-110"
-                                    : "border-gray-300"
-                                }`}
-                                style={{ backgroundColor: color.value }}
-                              />
-                            );
-                          })}
-                        </div>
-                      )}
+                      <AnimatePresence>
+                        {selectedImage && (
+                          <motion.img
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0 }}
+                            src={selectedImage}
+                            className="mt-6 rounded-xl shadow-lg"
+                          />
+                        )}
+                      </AnimatePresence>
                     </div>
 
+                    {/* MATERIAL */}
                     <select
-                      name="material"
-                      required
-                      onChange={handleChange}
                       className="input md:col-span-2"
+                      required
+                      value={form.material}
+                      onChange={(e) =>
+                        setForm({
+                          ...form,
+                          material: e.target.value,
+                        })
+                      }
                     >
-                      <option value="">{t("form.material")}</option>
-                      <option>{t("form.material.ldsp")}</option>
-                      <option>{t("form.material.acrylic")}</option>
+                      <option value="">Material tanlang</option>
+                      <option>LDSP</option>
+                      <option>Akril</option>
                     </select>
 
+                    {/* WISH */}
                     <textarea
-                      name="wish"
-                      placeholder={t("form.wish")}
                       rows={3}
-                      required
-                      onChange={handleChange}
                       className="input md:col-span-2"
+                      placeholder="Qanday oshxona xohlaysiz?"
+                      value={form.wish}
+                      onChange={(e) =>
+                        setForm({
+                          ...form,
+                          wish: e.target.value,
+                        })
+                      }
+                      required
                     />
 
                     <button
                       type="submit"
-                      className="md:col-span-2 bg-gray-900 text-white py-3 rounded-xl font-semibold hover:bg-gray-800 transition"
+                      className="md:col-span-2 bg-[#0C5C3F] text-white py-3 rounded-xl"
                     >
-                      {t("form.submit")}
+                      Buyurtma yuborish
                     </button>
                   </form>
                 )}

@@ -42,7 +42,7 @@ export function Navbar() {
         ${scrolled ? "bg-white/80 backdrop-blur-lg shadow-md" : "bg-white/95"}`}
       >
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between ">
             {/* LOGO */}
             <motion.a
               href="#"
@@ -57,8 +57,8 @@ export function Navbar() {
               <Image
                 src="/logo.webp"
                 alt="Miro by Rival"
-                width={140}
-                height={50}
+                width={160}
+                height={40}
                 priority
                 className="object-contain"
               />
@@ -69,7 +69,7 @@ export function Navbar() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="text-gray-700 hover:text-black font-medium transition"
+                  className="text-gray-700 font-semibold hover:text-black  transition"
                 >
                   {item.label}
                 </a>
@@ -89,7 +89,7 @@ export function Navbar() {
               {/* BUYURTMA BERISH */}
               <button
                 onClick={() => setOrderFormOpen(true)}
-                className="px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition"
+                className="px-6 py-2.5 bg-[#0C5C3F] text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition"
               >
                 {t("nav.order")}
               </button>
@@ -164,11 +164,11 @@ export function Navbar() {
 
                 {/* BUYURTMA */}
                 <button
+                  className="text-white py-3 rounded-full font-semibold"
                   onClick={() => {
                     setOrderFormOpen(true);
                     setMobileMenuOpen(false);
                   }}
-                  className="bg-gray-900 text-white py-3 rounded-full font-semibold"
                 >
                   {t("nav.order")}
                 </button>
