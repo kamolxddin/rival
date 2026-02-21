@@ -34,7 +34,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="text-3xl sm:text-5xl lg:text-6xl leading-tight mb-6"
+              className="text-3xl font-semibold sm:text-5xl lg:text-6xl leading-tight mb-6"
             >
               {t("hero.title")}
             </motion.h1>
@@ -44,7 +44,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-base sm:text-lg lg:text-xl text-gray-300 mb-8"
+              className="text-balance sm:text-lg lg:text-xl text-white mb-8"
             >
               {t("hero.subtitle")}
             </motion.p>
@@ -58,7 +58,7 @@ export function Hero() {
             >
               <button
                 onClick={() => setOrderFormOpen(true)}
-                className="px-8 py-4 bg-[#0C5C3F] text-white rounded-lg w-full sm:w-auto font-semibol"
+                className="px-8 py-4 bg-[#1F6F63] text-white rounded-lg w-full sm:w-auto font-semibol"
               >
                 {t("hero.cta")}
               </button>

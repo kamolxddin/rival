@@ -39,9 +39,9 @@ export function Navbar() {
       {/* ================= NAVBAR ================= */}
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 
-        ${scrolled ? "bg-white/80 backdrop-blur-lg shadow-md" : "bg-white/95"}`}
+        bg-white`}
       >
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="bgmax-w-8xl mx-auto px-6 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between ">
             {/* LOGO */}
             <motion.a
@@ -52,7 +52,7 @@ export function Navbar() {
                 duration: 0.8,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="relative inline-block"
+              className="relative inline-flex items-center pl-1 sm:pl-0 "
             >
               <Image
                 src="/logo.webp"
@@ -60,7 +60,7 @@ export function Navbar() {
                 width={160}
                 height={40}
                 priority
-                className="object-contain"
+                className=" object-contain"
               />
             </motion.a>
             {/* DESKTOP MENU */}
@@ -69,7 +69,7 @@ export function Navbar() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="text-gray-700 font-semibold hover:text-black  transition"
+                  className="text-black font-semibold hover:text-gray-300 transition"
                 >
                   {item.label}
                 </a>
@@ -80,7 +80,7 @@ export function Navbar() {
             <div className="hidden lg:flex items-center gap-6">
               <a
                 href="tel:+998901234567"
-                className="flex items-center gap-2 text-gray-600 hover:text-black text-sm"
+                className="flex items-center gap-2 text-black  hover:text-gray-300 text-sm"
               >
                 <Phone className="w-4 h-4" />
                 +998 55 500 18 00
@@ -89,7 +89,7 @@ export function Navbar() {
               {/* BUYURTMA BERISH */}
               <button
                 onClick={() => setOrderFormOpen(true)}
-                className="px-6 py-2.5 bg-[#0C5C3F] text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition"
+                className="px-6 py-2.5 bg-[#1F6F63] text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition"
               >
                 {t("nav.order")}
               </button>
@@ -98,7 +98,7 @@ export function Navbar() {
               <div className="flex items-center gap-3 text-sm font-semibold">
                 <button
                   onClick={() => setLanguage("uz")}
-                  className={language === "uz" ? "text-black" : "text-gray-400"}
+                  className={language === "uz" ? "text-black" : "text-gray-700"}
                 >
                   O‘zbek
                 </button>
@@ -164,7 +164,7 @@ export function Navbar() {
 
                 {/* BUYURTMA */}
                 <button
-                  className="text-white py-3 rounded-full font-semibold"
+                  className="text-white bg-[#1F6F63] py-3 rounded-full font-semibold"
                   onClick={() => {
                     setOrderFormOpen(true);
                     setMobileMenuOpen(false);

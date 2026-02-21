@@ -1,66 +1,98 @@
 "use client";
 
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { products } from "@/shared/Products/Products";
 
 const Products = () => {
   const { t } = useLanguage();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
-    <section id="products" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* TITLE */}
-        <div className="text-center mb-14">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0C5C3F] tracking-tight mb-6">
-            {t("products.title")}
-          </h2>
-          <p className=" text-lg text-black font-semibold max-w-3xl mx-auto leading-relaxed">
-            {t("products.subtitle")}
-          </p>
+    <>
+      <section id="products" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          {/* TITLE */}
+          <div className="text-center mb-14">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#1F6F63] tracking-tight mb-6">
+              {t("products.title")}
+            </h2>
+            <p className="text-lg text-black font-semibold max-w-3xl mx-auto leading-relaxed">
+              {t("products.subtitle")}
+            </p>
+          </div>
+
+          {/* GRID */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden"
+              >
+                {/* IMAGE */}
+                <div className="relative bg-white rounded-t-2xl p-4">
+                  <img
+                    src={product.image}
+                    alt={t(`product.${product.id}.name` as any)}
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+
+                {/* CONTENT */}
+                <div className="p-6 text-gray-900">
+                  <h3 className="text-xl font-semibold mb-2">
+                    {t(`product.${product.id}.name` as any)}
+                  </h3>
+
+                  <p className="text-sm text-gray-600 mb-3">
+                    {t(`product.${product.id}.desc` as any)}
+                  </p>
+
+                  <p className="text-sm text-gray-500">
+                    Rang: {t(`product.${product.id}.color` as any)}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* BUTTON */}
+          <div className="text-center mt-16">
+            <button className="bg-[#1F6F63] text-white px-8 py-4 rounded-lg hover:bg-[#14534A] transition">
+              Barcha mahsulotlar
+            </button>
+          </div>
         </div>
+      </section>
 
-        {/* GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition"
-            >
-              {/* IMAGE */}
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={t(`product.${product.id}.name` as any)}
-                  className="w-full h-full object-cover object-center"
-                />
-              </div>
-
-              {/* CONTENT */}
-              <div className="p-6 bg-white text-gray-900 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">
-                  {t(`product.${product.id}.name` as any)}
-                </h3>
-
-                <p className="text-sm text-gray-600 mb-3">
-                  {t(`product.${product.id}.desc` as any)}
-                </p>
-
-                <p className="text-sm text-gray-500 mb-2">
-                  Rang: {t(`product.${product.id}.color` as any)}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* BUTTON */}
-        <div className="text-center mt-16">
-          <button className="bg-[#0C5C3F] text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition">
-            Barcha mahsulotlar
-          </button>
-        </div>
-      </div>
-    </section>
+      {/* FULL SCREEN MODAL (Mobile) */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-6"
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.img
+              src={selectedImage}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.4 }}
+              className="max-h-[90vh] w-auto object-contain rounded-xl"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

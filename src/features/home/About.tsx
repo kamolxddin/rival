@@ -10,7 +10,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="relative py-28 bg-[#0C5C3F] text-white overflow-hidden"
+      className="relative py-28 bg-[#1F6F63] text-white overflow-hidden"
     >
       <div className="max-w-6xl mx-auto px-6">
         {/* ===== TITLE ===== */}

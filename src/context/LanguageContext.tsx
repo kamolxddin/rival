@@ -18,20 +18,20 @@ const translations = {
     "nav.about": "Biz haqimizda",
     "nav.products": "Mahsulotlarimiz",
     "nav.showroom": "Showroom",
-    "nav.order": "O‘lcham olish",
+    "nav.order": "Bepul loyiha olish",
 
     // Hero
-    "hero.title": "Sizning orzuingizdagi mebellar",
+    "hero.title": "Sizning orzuingizdagi oshxona mebellari",
     "hero.subtitle":
-      "Biz yuqori sifatli mebel va ichki dizayn xizmatlari bilan uyingizni orzularingizdagi joyga aylantiramiz. Har bir loyihani maxsus e'tibor va professional yondashuv bilan amalga oshiramiz.",
-    "hero.cta": "O‘lcham olish",
+      "Sizga zamonaviy dizayn va tezkor ishlab chiqarishni uyg‘unlashtirgan holda, orzuyingizdagi va hohishingizga mos ranglardagi oshxonangizni tayyorlab beramiz. Har bir loyiha ishonch, mas’uliyat va professional tajriba asosida amalga oshiriladi.",
+    "hero.cta": "Bepul loyiha olish",
     "hero.projects": "Bizning mahsulotlar",
 
     // Products
     "products.title": "Mahsulotlarimiz",
-    "products.subtitle": "Amalga oshirilgan ishlarimizdan namunalar",
+    "products.subtitle": "Ishlab chiqarilgan mahsulotlarimizdan namunalar",
     // Products Data
-    "product.1.name": "Premium oshxona",
+    "product.1.name": "Ixcham oshxona",
     "product.1.desc": "Yuqori sifatli va zamonaviy dizayn",
     "product.1.color": "Oq",
 
@@ -39,29 +39,29 @@ const translations = {
     "product.2.desc": "Funksional va chiroyli interyer",
     "product.2.color": "Yog‘och rang",
 
-    "product.3.name": "Zamonaviy Oshxona",
-    "product.3.desc": "Keng va qulay loyiha",
+    "product.3.name": "Premium oshxona",
+    "product.3.desc": "Hashamatli ko'rinish",
     "product.3.color": "Jigarrang",
 
     // About
     "about.title": "Biz haqimizda",
     "about.description":
-      "Rival Uz 2020 yildan buyon zamonaviy va sifatli mebellar ishlab chiqarish bilan shugullanadi. Biz turli xil mebel turlari — oshxona mebellari, shkaflar, yotoqxona va boshqa interyer yechimlarini loyihalash va ishlab chiqarishga ixtisoslashganmiz. Bizning maqsadimiz — har bir mijoz uchun qulay, estetik va funksional makon yaratish. Har bir loyiha individual yondashuv asosida amalga oshiriladi, material sifati va yigilish jarayoni esa doimo yuqori nazorat ostida boladi.",
-    "about.step1.title": "Yuqori sifat",
+      "MIRO — bu Rival tomonidan ishga tushirilgan yangi loyiha bo`lib, zamonaviy va sifatli oshxona mebellarini ishlab chiqarishga ixtisoslashgan. Rival Uz 2020 yildan buyon mebel ishlab chiqarish sohasida faoliyat yuritib keladi. Ko`p yillik tajriba, sinovdan o`tgan materiallar va professional jamoa asosida MIRO loyihasi tashkil etildi.",
+    "about.step1.title": "Dizayn va zamer",
     "about.step1.desc":
-      "Biz faqat yuqori sifatli materiallardan foydalanib, har bir mahsulotni chuqur nazorat ostida ishlab chiqaramiz. Mijozlarimizga eng yaxshi natijalarni taqdim etish bizning ustuvor maqsadimizdir.",
+      "Malakali mutaxassislarimiz sizga bepul konsultatsiya, bepul dizayn va bepul o`lcham olish xizmatini taqdim etadi. Har bir loyiha individual yondashuv asosida amalga oshiriladi.",
     "about.step2.title": "Professional xizmat",
     "about.step2.desc":
       "Malakali mutaxassislarimiz loyihangizni boshidan oxirigacha kuzatib boradi. Konsultatsiya, dizayn loyihalash va o'rnatishda to'liq yordam beramiz.",
-    "about.step3.title": "Kafolat tizimi",
+    "about.step3.title": "Tezkor ishlab chiqarish",
     "about.step3.desc":
-      "Barcha mahsulotlarimizga 2 yillik rasmiy kafolat beramiz. Sifatimizga ishonchimiz komil va mijozlar ehtiyojlarini birinchi o'ringa qo'yamiz.",
-    "about.step4.title": "Yetkazib berish",
+      "Buyurtmalar belgilangan muddatda tayyorlanadi. Standart buyurtmalar qisqa vaqt ichida ishlab chiqariladi va sifatdan hech qachon chekinilmaydi.",
+    "about.step4.title": "Yetkazib berish va o'rnatish",
     "about.step4.desc":
-      "Angren shahri bo'ylab bepul yetkazib berish xizmatini taqdim etamiz. O'rnatish xizmatlari ham kafolatlangan va professional darajada amalga oshiriladi.",
-    "about.step5.title": "Tezkor ishlab chiqarish",
+      "Angren shahri bo`ylab yetkazib berish xizmati mavjud. Professional jamoamiz mahsulotni to`g`ri va sifatli o`rnatib beradi.",
+    "about.step5.title": "Kafolat tizimi",
     "about.step5.desc":
-      "Express tezlikda buyurtmalarni qabul qilamiz. Standart buyurtmalar 15-20 kun ichida, shoshilinch buyurtmalar esa 7-10 kun ichida tayyor bo'ladi.",
+      "Barcha mahsulotlarimiz rasmiy kafolat bilan taqdim etiladi. Sifat va mijoz ishonchi biz uchun ustuvor.",
 
     // Showroom
     "showroom.title": "Bizning showroom",
@@ -106,50 +106,50 @@ const translations = {
     "nav.about": "О нас",
     "nav.products": "Наши продукты",
     "nav.showroom": "Контакты",
-    "nav.order": "Замер",
+    "nav.order": "Получить бесплатный проект",
 
     // Hero
-    "hero.title": "Мебель вашей мечты",
+    "hero.title": "Кухонная мебель вашей мечты",
     "hero.subtitle":
-      "Мы превратим ваш дом в место вашей мечты с помощью высококачественной мебели и услуг дизайна интерьера. Каждый проект выполняем с особым вниманием и профессиональным подходом.",
-    "hero.cta": "Замер",
+      "Мы создадим кухню вашей мечты в желаемых вами цветах, сочетая современный дизайн и быстрое изготовление. Каждый проект выполняется с доверием, ответственностью и профессиональным опытом.",
+    "hero.cta": "Получить бесплатный проект",
     "hero.projects": "Наши продукты",
 
     // Products
     "products.title": "Наши продукты",
-    "products.subtitle": "Примеры выполненных работ",
+    "products.subtitle": "Образцы нашей производимой продукции",
     // Products Data
-    "product.1.name": "Современная спальня",
+    "product.1.name": "Компактная кухня",
     "product.1.desc": "Высокое качество и современный дизайн",
     "product.1.color": "Серый",
 
-    "product.2.name": "Премиум кухня",
+    "product.2.name": "Уникальная Кухня",
     "product.2.desc": "Функциональный и стильный интерьер",
     "product.2.color": "Белый",
 
-    "product.3.name": "L-образная кухня",
+    "product.3.name": "Премиум кухня",
     "product.3.desc": "Просторный и удобный проект",
     "product.3.color": "Деревянный цвет",
 
     // About
     "about.title": "О нас",
     "about.description":
-      "Компания Miro основана в 2020 году и на сегодняшний день обеспечивает дома тысяч клиентов современной и качественной мебелью. Наша основная цель - доставить качественную, доступную и красивую мебель каждой узбекской семье. С самого начала пути мы создаем продукты, оправдывающие доверие наших клиентов, и предоставляем профессиональное обслуживание. Команда опытных специалистов, современное оборудование и высококачественные материалы - ключ к нашему успеху.",
-    "about.step1.title": "Высокое качество",
+      "MIRO — это новый проект, запущенный компанией Rival, специализирующейся на производстве современной и высококачественной кухонной мебели. Компания Rival Uz работает в сфере производства мебели с 2020 года. Проект MIRO был создан на основе многолетнего опыта, проверенных материалов и профессиональной команды.Мы принимаем заказы онлайн и офлайн.",
+    "about.step1.title": "Дизайн и размеры",
     "about.step1.desc":
-      "Мы используем только высококачественные материалы и производим каждый продукт под строгим контролем. Наш приоритет - предоставить нашим клиентам лучшие результаты.",
+      "Мы принимаем заказы онлайн и офлайн. Каждому клиенту мы предоставляем бесплатный дизайн-проект и бесплатные замеры.",
     "about.step2.title": "Профессиональное обслуживание",
     "about.step2.desc":
       "Наши квалифицированные специалисты будут следить за вашим проектом от начала до конца. Мы оказываем полную помощь в консультировании, проектировании дизайна и установке.",
     "about.step3.title": "Гарантийная система",
     "about.step3.desc":
-      "Мы предоставляем официальную 2-летнюю гарантию на всю нашу продукцию. Мы уверены в нашем качестве и ставим потребности клиентов на первое место.",
-    "about.step4.title": "Доставка",
+      "Заказы выполняются в указанные сроки. Стандартные заказы производятся в короткие сроки, при этом качество никогда не страдает.",
+    "about.step4.title": "Доставка и установка",
     "about.step4.desc":
-      "Мы предлагаем бесплатную доставку по городу Ангрен. Услуги по установке также гарантированы и выполняются профессионально.",
-    "about.step5.title": "Быстрое производство",
+      "Доставка осуществляется по всему городу Ангрен. Наша профессиональная команда установит изделие правильно и качественно.",
+    "about.step5.title": "Гарантийная система",
     "about.step5.desc":
-      "Мы принимаем заказы с экспресс-скоростью. Стандартные заказы готовы за 15-20 дней, срочные заказы - за 7-10 дней.",
+      "На всю нашу продукцию распространяется официальная гарантия. Качество и доверие клиентов — наши главные приоритеты.",
 
     // Showroom
     "showroom.title": "Наш шоу-рум",

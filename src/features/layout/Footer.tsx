@@ -12,12 +12,11 @@ export function Footer() {
   return (
     <>
       <footer
-        // style={{ backgroundColor: "#267479" }}
         id="contact"
-        className="bg-emerald-900 text-gray-300 w-full"
+        className="bg-[#1F6F63] text-white w-full"
       >
         <div className="px-6 sm:px-10 lg:px-16 py-16">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="max-w-8xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* 1. Company Info */}
             <div className="space-y-4">
               <h3 className="text-white text-2xl font-semibold">Miro</h3>
