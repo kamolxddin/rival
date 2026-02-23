@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { products } from "@/shared/Products/Products";
+import Link from "next/link";
 
 const Products = () => {
   const { t } = useLanguage();
@@ -54,7 +55,8 @@ const Products = () => {
                   </p>
 
                   <p className="text-sm text-gray-500">
-                    Rang: {t(`product.${product.id}.color` as any)}
+                    <a className="text-black">{t("products.color.title")}:</a>{" "}
+                    {t(`product.${product.id}.color` as any)}
                   </p>
                 </div>
               </motion.div>
@@ -63,9 +65,25 @@ const Products = () => {
 
           {/* BUTTON */}
           <div className="text-center mt-16">
-            <button className="bg-[#1F6F63] text-white px-8 py-4 rounded-lg hover:bg-[#14534A] transition">
-              Barcha mahsulotlar
-            </button>
+            <motion.button
+              initial={{ y: 0 }}
+              animate={{ y: [0, -8, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 rounded-xl bg-[#1F6F63] text-white font-semibold shadow-xl  transition-all duration-300"
+            >
+              <Link
+                href="/products"
+                className="bg-[#1F6F63] text-white px-8 py-4 rounded-lg transition inline-block"
+              >
+                Barcha mahsulotlar
+              </Link>
+            </motion.button>
           </div>
         </div>
       </section>

@@ -27,7 +27,7 @@ export function OrderForm({ isOpen, onClose }: Props) {
       key: "wood",
       name: "Yog‘och",
       value: "#C8A97E",
-      image: "/dubVotan.webp",
+      image: "/dubUrban.webp",
     },
     {
       key: "white",
@@ -38,13 +38,13 @@ export function OrderForm({ isOpen, onClose }: Props) {
   ];
 
   const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
+
     region: "",
     phone: "",
     length: "",
     width: "",
-    thickness: "",
+
     color: "",
     material: "",
     wish: "",
@@ -79,14 +79,13 @@ export function OrderForm({ isOpen, onClose }: Props) {
     const message = `
 🪑 YANGI BUYURTMA
 
-👤 Ism: ${form.firstName} ${form.lastName}
+👤 Ism: ${form.name} 
 📍 Hudud: ${form.region}
 📞 Telefon: ${form.phone}
 
 📏 O‘lchamlar:
 • Uzunlik: ${form.length} mm
 • Kenglik: ${form.width} mm
-• Qalinlik: ${form.thickness} mm
 
 🎨 Rang: ${form.color}
 🧱 Material: ${form.material}
@@ -112,13 +111,11 @@ ${form.wish}
 
         // CLEAR FORM
         setForm({
-          firstName: "",
-          lastName: "",
+          name: "",
           region: "",
           phone: "",
           length: "",
           width: "",
-          thickness: "",
           color: "",
           material: "",
           wish: "",
@@ -143,7 +140,7 @@ ${form.wish}
           {/* BACKDROP */}
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.6 }}
+            animate={{ opacity: 0.4 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black z-40"
             onClick={onClose}
@@ -151,15 +148,15 @@ ${form.wish}
 
           {/* MODAL */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 40 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            exit={{ opacity: 0, y: 30 }}
+            className="fixed inset-x-0 bottom-0 top-[90px] z-50 flex items-start justify-center p-4"
           >
-            <div className="bg-gray-700 text-white w-full max-w-2xl rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div className="bg-white text-gray-800 w-full max-w-lg rounded-xl shadow-2xl max-h-[85vh] overflow-y-auto">
               {/* HEADER */}
-              <div className="flex justify-between items-center p-6 border-b border-white/20">
-                <h2 className="text-xl font-semibold">Bepul o‘lcham olish</h2>
+              <div className="flex justify-between items-center px-6 py-4 border-b">
+                <h2 className="text-lg font-semibold">{t("form.title")}</h2>
                 <button onClick={onClose}>
                   <X />
                 </button>
@@ -167,45 +164,29 @@ ${form.wish}
 
               <div className="p-6">
                 {submitted ? (
-                  <div className="flex flex-col items-center py-16">
-                    <CheckCircle size={60} />
-                    <p className="mt-4">Buyurtma yuborildi</p>
+                  <div className="flex flex-col items-center py-12">
+                    <CheckCircle size={50} className="text-green-600" />
+                    <p className="mt-4 text-sm">{t("form.success")}</p>
                   </div>
                 ) : (
-                  <form
-                    onSubmit={handleSubmit}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
-                  >
+                  <form onSubmit={handleSubmit} className="space-y-4">
                     {/* TEXT */}
                     <input
-                      className="input"
-                      placeholder="Ism"
-                      value={form.firstName}
+                      className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F6F63]"
+                      placeholder={t("form.name")}
+                      value={form.name}
                       onChange={(e) =>
                         setForm({
                           ...form,
-                          firstName: textOnly(e.target.value),
+                          name: textOnly(e.target.value),
                         })
                       }
                       required
                     />
 
                     <input
-                      className="input"
-                      placeholder="Familiya"
-                      value={form.lastName}
-                      onChange={(e) =>
-                        setForm({
-                          ...form,
-                          lastName: textOnly(e.target.value),
-                        })
-                      }
-                      required
-                    />
-
-                    <input
-                      className="input md:col-span-2"
-                      placeholder="Viloyat / Shahar"
+                      className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F6F63]"
+                      placeholder={t("form.region")}
                       value={form.region}
                       onChange={(e) =>
                         setForm({
@@ -217,8 +198,8 @@ ${form.wish}
                     />
 
                     <input
-                      className="input md:col-span-2"
-                      placeholder="Telefon"
+                      className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F6F63]"
+                      placeholder={t("form.phone")}
                       value={form.phone}
                       onChange={(e) =>
                         setForm({
@@ -230,50 +211,39 @@ ${form.wish}
                     />
 
                     {/* DIMENSIONS */}
-                    <input
-                      className="input"
-                      placeholder="Uzunlik (mm)"
-                      value={form.length}
-                      onChange={(e) =>
-                        setForm({
-                          ...form,
-                          length: dimensionOnly(e.target.value),
-                        })
-                      }
-                      required
-                    />
+                    <div className="grid grid-cols-2 gap-4">
+                      <input
+                        className="border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F6F63]"
+                        placeholder={t("form.length")}
+                        value={form.length}
+                        onChange={(e) =>
+                          setForm({
+                            ...form,
+                            length: dimensionOnly(e.target.value),
+                          })
+                        }
+                        required
+                      />
 
-                    <input
-                      className="input"
-                      placeholder="Kenglik (mm)"
-                      value={form.width}
-                      onChange={(e) =>
-                        setForm({
-                          ...form,
-                          width: dimensionOnly(e.target.value),
-                        })
-                      }
-                      required
-                    />
-
-                    <input
-                      className="input md:col-span-2"
-                      placeholder="Qalinlik (mm)"
-                      value={form.thickness}
-                      onChange={(e) =>
-                        setForm({
-                          ...form,
-                          thickness: dimensionOnly(e.target.value),
-                        })
-                      }
-                      required
-                    />
+                      <input
+                        className="border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F6F63]"
+                        placeholder={t("form.width")}
+                        value={form.width}
+                        onChange={(e) =>
+                          setForm({
+                            ...form,
+                            width: dimensionOnly(e.target.value),
+                          })
+                        }
+                        required
+                      />
+                    </div>
 
                     {/* COLORS */}
-                    <div className="md:col-span-2">
-                      <p className="mb-3">Rang tanlang</p>
+                    <div>
+                      <p className="text-sm font-medium mb-2">{t("form.selectColor")}</p>
 
-                      <div className="flex gap-4">
+                      <div className="flex gap-3">
                         {colors.map((color) => (
                           <button
                             key={color.key}
@@ -285,7 +255,7 @@ ${form.wish}
                               });
                               setSelectedImage(color.image);
                             }}
-                            className="w-10 h-10 rounded-full border"
+                            className="w-8 h-8 rounded-full border"
                             style={{
                               backgroundColor: color.value,
                             }}
@@ -293,22 +263,17 @@ ${form.wish}
                         ))}
                       </div>
 
-                      <AnimatePresence>
-                        {selectedImage && (
-                          <motion.img
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0 }}
-                            src={selectedImage}
-                            className="mt-6 rounded-xl shadow-lg"
-                          />
-                        )}
-                      </AnimatePresence>
+                      {selectedImage && (
+                        <img
+                          src={selectedImage}
+                          className="mt-4 rounded-lg shadow"
+                        />
+                      )}
                     </div>
 
                     {/* MATERIAL */}
                     <select
-                      className="input md:col-span-2"
+                      className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F6F63]"
                       required
                       value={form.material}
                       onChange={(e) =>
@@ -318,7 +283,7 @@ ${form.wish}
                         })
                       }
                     >
-                      <option value="">Material tanlang</option>
+                      <option value="">{t("form.selectMaterial")}</option>
                       <option>LDSP</option>
                       <option>Akril</option>
                     </select>
@@ -326,8 +291,8 @@ ${form.wish}
                     {/* WISH */}
                     <textarea
                       rows={3}
-                      className="input md:col-span-2"
-                      placeholder="Qanday oshxona xohlaysiz?"
+                      className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F6F63]"
+                      placeholder={t("form.wish")}
                       value={form.wish}
                       onChange={(e) =>
                         setForm({
@@ -340,7 +305,7 @@ ${form.wish}
 
                     <button
                       type="submit"
-                      className="md:col-span-2 bg-[#0C5C3F] text-white py-3 rounded-xl"
+                      className="w-full bg-[#1F6F63] hover:bg-[#174F46] text-white py-2.5 rounded-lg text-sm transition"
                     >
                       Buyurtma yuborish
                     </button>

@@ -11,7 +11,7 @@ export function Showroom() {
 
   return (
     <>
-      <section id="showroom" className="py-20 text-black">
+      <section id="showroom" className="py-20  text-black">
         <div className="max-w-7xl mx-auto px-4">
           {/* TITLE */}
           <div className="text-center mb-14">
@@ -23,16 +23,20 @@ export function Showroom() {
             </p>
           </div>
 
-          {/* VIDEO PREVIEW */}
+          {/* VIDEO PREVIEW WITH THUMBNAIL */}
           <div className="w-full max-w-[900px] mx-auto">
-            <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl bg-gray-900">
+            <div
+              className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl cursor-pointer group "
+              onClick={() => setIsPlaying(true)}
+            >
+              {/* DARK OVERLAY */}
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition" />
+
+              {/* PLAY BUTTON */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <button
-                  onClick={() => setIsPlaying(true)}
-                  className="w-24 h-24 bg-white text-gray-900 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"
-                >
+                <div className="w-24 h-24 bg-white text-gray-900 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition">
                   <Play className="w-12 h-12 ml-1" fill="currentColor" />
-                </button>
+                </div>
               </div>
             </div>
           </div>
@@ -47,10 +51,9 @@ export function Showroom() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center"
-            onClick={() => setIsPlaying(false)} // outside bosilganda yopiladi
+            className="fixed inset-0 bg-black/90 backdrop-blur-sm z-[100] flex items-center justify-center"
+            onClick={() => setIsPlaying(false)}
           >
-            {/* STOP PROPAGATION */}
             <div
               className="relative w-full h-full flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
@@ -58,9 +61,9 @@ export function Showroom() {
               {/* CLOSE BUTTON */}
               <button
                 onClick={() => setIsPlaying(false)}
-                className="absolute top-6 right-6 text-white z-[110]"
+                className="absolute top-6 right-6 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full backdrop-blur-md transition z-[110]"
               >
-                <X size={32} />
+                <X size={28} />
               </button>
 
               {/* VIDEO */}
@@ -73,7 +76,7 @@ export function Showroom() {
                 animate={{ scale: 1 }}
                 exit={{ scale: 0.95 }}
                 transition={{ duration: 0.4 }}
-                className="max-w-[95vw] max-h-[95vh] object-contain"
+                className="max-w-[95vw] max-h-[90vh] rounded-xl shadow-2xl"
               />
             </div>
           </motion.div>

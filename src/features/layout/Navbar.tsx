@@ -14,7 +14,7 @@ export function Navbar() {
   const [orderFormOpen, setOrderFormOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Sticky blur on scroll
+  // Scroll detection
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -22,11 +22,6 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Scroll lock when drawer open
-  useEffect(() => {
-    // document.body.style.overflow = mobileMenuOpen ? "hidden" : "auto";
-  }, [mobileMenuOpen]);
 
   const menuItems = [
     { href: "#about", label: t("nav.about") },
@@ -38,88 +33,93 @@ export function Navbar() {
     <>
       {/* ================= NAVBAR ================= */}
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 
-        bg-white`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+          scrolled ? "bg-white shadow-md backdrop-blur-md" : "bg-white/95"
+        }`}
       >
-        <div className="bgmax-w-8xl mx-auto px-6 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between ">
-            {/* LOGO */}
-            <motion.a
-              href="#"
-              initial={{ opacity: 0, y: -15, scale: 0.96, filter: "blur(6px)" }}
-              animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-              transition={{
-                duration: 0.8,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="relative inline-flex items-center pl-1 sm:pl-0 "
-            >
-              <Image
-                src="/logo.webp"
-                alt="Miro by Rival"
-                width={160}
-                height={40}
-                priority
-                className=" object-contain"
-              />
-            </motion.a>
-            {/* DESKTOP MENU */}
-            <div className="hidden lg:flex items-center gap-10">
-              {menuItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-black font-semibold hover:text-gray-300 transition"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
+        {/* INNER WRAPPER */}
+        <div className="max-w-9xl mx-auto h-[90px] flex items-center justify-between px-4 lg:px-8">
+          {/* LOGO */}
+          <motion.a
+            href="#"
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center"
+          >
+            <Image
+              src="/logo.webp"
+              alt="Miro by Rival"
+              width={190}
+              height={60}
+              className="object-contain scale-110"
+            />
+          </motion.a>
 
-            {/* RIGHT SIDE DESKTOP */}
-            <div className="hidden lg:flex items-center gap-6">
+          {/* DESKTOP MENU */}
+          <div className="hidden lg:flex items-center gap-10">
+            {menuItems.map((item) => (
               <a
-                href="tel:+998901234567"
-                className="flex items-center gap-2 text-black  hover:text-gray-300 text-sm"
+                key={item.href}
+                href={item.href}
+                className="text-gray-800 font-semibold hover:text-[#1F6F63] transition"
               >
-                <Phone className="w-4 h-4" />
-                +998 55 500 18 00
+                {item.label}
               </a>
-
-              {/* BUYURTMA BERISH */}
-              <button
-                onClick={() => setOrderFormOpen(true)}
-                className="px-6 py-2.5 bg-[#1F6F63] text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition"
-              >
-                {t("nav.order")}
-              </button>
-
-              {/* LANGUAGE */}
-              <div className="flex items-center gap-3 text-sm font-semibold">
-                <button
-                  onClick={() => setLanguage("uz")}
-                  className={language === "uz" ? "text-black" : "text-gray-700"}
-                >
-                  O‘zbek
-                </button>
-                <span className="text-gray-300">|</span>
-                <button
-                  onClick={() => setLanguage("ru")}
-                  className={language === "ru" ? "text-black" : "text-gray-400"}
-                >
-                  Рус
-                </button>
-              </div>
-            </div>
-
-            {/* MOBILE MENU BUTTON */}
-            <button
-              className="lg:hidden"
-              onClick={() => setMobileMenuOpen(true)}
-            >
-              <Menu />
-            </button>
+            ))}
           </div>
+
+          {/* RIGHT SIDE DESKTOP */}
+          <div className="hidden lg:flex items-center gap-6">
+            <a
+              href="tel:+998555001800"
+              className="flex items-center gap-2 text-gray-700 hover:text-[#1F6F63] text-sm"
+            >
+              <Phone className="w-4 h-4" />
+              +998 55 500 18 00
+            </a>
+
+            <motion.button
+              onClick={() => setOrderFormOpen(true)}
+              initial={{ y: 0 }}
+              animate={{ y: [0, -8, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-3 py-2 rounded-xl bg-[#1F6F63] text-white font-semibold shadow-xl hover:bg-[#14534A] transition-all duration-300"
+            >
+              {t("nav.order")}
+            </motion.button>
+
+            {/* LANGUAGE SWITCH */}
+            <div className="flex items-center gap-3 text-sm font-semibold">
+              <button
+                onClick={() => setLanguage("uz")}
+                className={language === "uz" ? "text-black" : "text-gray-400"}
+              >
+                O‘zbek
+              </button>
+              <span className="text-gray-300">|</span>
+              <button
+                onClick={() => setLanguage("ru")}
+                className={language === "ru" ? "text-black" : "text-gray-400"}
+              >
+                Рус
+              </button>
+            </div>
+          </div>
+
+          {/* MOBILE MENU BUTTON */}
+          <button
+            className="lg:hidden flex items-center justify-center"
+            onClick={() => setMobileMenuOpen(true)}
+          >
+            <Menu size={28} />
+          </button>
         </div>
       </nav>
 
@@ -146,7 +146,10 @@ export function Navbar() {
             >
               {/* CLOSE */}
               <div className="flex justify-end mb-10">
-                <X onClick={() => setMobileMenuOpen(false)} />
+                <X
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="cursor-pointer"
+                />
               </div>
 
               {/* MENU LINKS */}
@@ -156,13 +159,12 @@ export function Navbar() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="hover:text-gray-900"
+                    className="hover:text-[#1F6F63]"
                   >
                     {item.label}
                   </a>
                 ))}
 
-                {/* BUYURTMA */}
                 <button
                   className="text-white bg-[#1F6F63] py-3 rounded-full font-semibold"
                   onClick={() => {

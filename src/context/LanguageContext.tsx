@@ -20,7 +20,23 @@ const translations = {
     "nav.showroom": "Showroom",
     "nav.order": "Bepul loyiha olish",
 
-    // Hero
+    form: {
+      title: "Bepul loyiha olish",
+      name: "Ism",
+      region: "Viloyat / Shahar",
+      phone: "Telefon",
+      length: "Uzunlik (mm)",
+      width: "Kenglik (mm)",
+      selectColor: "Rang tanlang",
+      selectMaterial: "Material tanlang",
+      material: "Material",
+      wish: "Qanday oshxona xohlaysiz?",
+      submit: "Buyurtma yuborish",
+      success: "Buyurtma yuborildi!",
+      newOrder: "Yangi buyurtma",
+      size: "O‘lchamlar",
+    },
+    // Hero,
     "hero.title": "Sizning orzuingizdagi oshxona mebellari",
     "hero.subtitle":
       "Sizga zamonaviy dizayn va tezkor ishlab chiqarishni uyg‘unlashtirgan holda, orzuyingizdagi va hohishingizga mos ranglardagi oshxonangizni tayyorlab beramiz. Har bir loyiha ishonch, mas’uliyat va professional tajriba asosida amalga oshiriladi.",
@@ -30,6 +46,7 @@ const translations = {
     // Products
     "products.title": "Mahsulotlarimiz",
     "products.subtitle": "Ishlab chiqarilgan mahsulotlarimizdan namunalar",
+    "products.color.title": "Rang",
     // Products Data
     "product.1.name": "Ixcham oshxona",
     "product.1.desc": "Yuqori sifatli va zamonaviy dizayn",
@@ -46,7 +63,7 @@ const translations = {
     // About
     "about.title": "Biz haqimizda",
     "about.description":
-      "MIRO — bu Rival tomonidan ishga tushirilgan yangi loyiha bo`lib, zamonaviy va sifatli oshxona mebellarini ishlab chiqarishga ixtisoslashgan. Rival Uz 2020 yildan buyon mebel ishlab chiqarish sohasida faoliyat yuritib keladi. Ko`p yillik tajriba, sinovdan o`tgan materiallar va professional jamoa asosida MIRO loyihasi tashkil etildi.",
+      "MIRO — bu Rival Group tomonidan ishga tushirilgan yangi loyiha bo`lib, zamonaviy va sifatli oshxona mebellarini ishlab chiqarishga ixtisoslashgan. Rival Group 2020 yildan beri mebel ishlab chiqarish sohasida faoliyat yuritib keladi. Ko`p yillik tajriba, sinovdan o`tgan materiallar va professional jamoa asosida MIRO loyihasi tashkil etildi.",
     "about.step1.title": "Dizayn va zamer",
     "about.step1.desc":
       "Malakali mutaxassislarimiz sizga bepul konsultatsiya, bepul dizayn va bepul o`lcham olish xizmatini taqdim etadi. Har bir loyiha individual yondashuv asosida amalga oshiriladi.",
@@ -108,6 +125,20 @@ const translations = {
     "nav.showroom": "Контакты",
     "nav.order": "Получить бесплатный проект",
 
+    form: {
+      title: "Получить бесплатный проект",
+      name: "Имя",
+      region: "Регион / Город",
+      phone: "Телефон",
+      length: "Длина (мм)",
+      width: "Ширина (мм)",
+      selectColor: "Выберите цвет",
+      selectMaterial: "Выберите материал",
+      wish: "Какую кухню вы хотите?",
+      submit: "Отправить заявку",
+      success: "Заявка отправлена",
+    },
+
     // Hero
     "hero.title": "Кухонная мебель вашей мечты",
     "hero.subtitle":
@@ -118,6 +149,8 @@ const translations = {
     // Products
     "products.title": "Наши продукты",
     "products.subtitle": "Образцы нашей производимой продукции",
+    "products.color.title": "Чвет",
+
     // Products Data
     "product.1.name": "Компактная кухня",
     "product.1.desc": "Высокое качество и современный дизайн",
@@ -134,7 +167,7 @@ const translations = {
     // About
     "about.title": "О нас",
     "about.description":
-      "MIRO — это новый проект, запущенный компанией Rival, специализирующейся на производстве современной и высококачественной кухонной мебели. Компания Rival Uz работает в сфере производства мебели с 2020 года. Проект MIRO был создан на основе многолетнего опыта, проверенных материалов и профессиональной команды.Мы принимаем заказы онлайн и офлайн.",
+      "MIRO — это новый проект, запущенный компанией Rival Group, специализирующейся на производстве современной и высококачественной кухонной мебели. Компания Rival Group работает в мебельной отрасли с 2020 года. Проект MIRO был создан на основе многолетнего опыта, проверенных материалов и профессиональной команды.",
     "about.step1.title": "Дизайн и размеры",
     "about.step1.desc":
       "Мы принимаем заказы онлайн и офлайн. Каждому клиенту мы предоставляем бесплатный дизайн-проект и бесплатные замеры.",
@@ -197,8 +230,16 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>("uz");
 
-  const t = (key: keyof (typeof translations)["uz"]): string => {
-    return translations[language][key] || key;
+  const t = (key: string) => {
+    const keys = key.split(".");
+    let result = translations[language];
+
+    for (let k of keys) {
+      if (!result) break;
+      result = result[k];
+    }
+
+    return result || translations[language][key] || key;
   };
 
   return (

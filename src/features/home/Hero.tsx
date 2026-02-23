@@ -16,12 +16,12 @@ export function Hero() {
         {/* Background */}
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/product3.webp"
+            src="/homepage.webp"
             alt="Zamonaviy oshxona dizayni"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover object-[center_50%]"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
         </div>
@@ -56,12 +56,21 @@ export function Hero() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <button
+              <motion.button
                 onClick={() => setOrderFormOpen(true)}
-                className="px-8 py-4 bg-[#1F6F63] text-white rounded-lg w-full sm:w-auto font-semibol"
+                initial={{ y: 0 }}
+                animate={{ y: [0, -8, 0] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 rounded-xl bg-[#1F6F63] text-white font-semibold shadow-xl hover:bg-[#14534A] transition-all duration-300"
               >
                 {t("hero.cta")}
-              </button>
+              </motion.button>
 
               <a
                 href="#products"
