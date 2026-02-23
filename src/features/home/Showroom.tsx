@@ -67,17 +67,22 @@ export function Showroom() {
               </button>
 
               {/* VIDEO */}
-              <motion.video
-                src="/showroom.mp4"
-                autoPlay
-                controls
-                playsInline
+              <motion.div
                 initial={{ scale: 0.95 }}
                 animate={{ scale: 1 }}
                 exit={{ scale: 0.95 }}
                 transition={{ duration: 0.4 }}
-                className="max-w-[95vw] max-h-[90vh] rounded-xl shadow-2xl"
-              />
+                className="w-[95vw] max-w-[1000px] aspect-video rounded-xl overflow-hidden shadow-2xl"
+              >
+                <iframe
+                  src="https://www.youtube.com/embed/Vp8nb6ajphU?si=i4b1W7h07AGU7sGW"
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                  className="w-full h-full"
+                ></iframe>
+              </motion.div>
             </div>
           </motion.div>
         )}
