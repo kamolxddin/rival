@@ -78,7 +78,6 @@ export function Showroom() {
                   src="https://www.youtube.com/embed/Vp8nb6ajphU?si=i4b1W7h07AGU7sGW"
                   title="YouTube video player"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin"
                   allowfullscreen
                   className="w-full h-full"
                 ></iframe>

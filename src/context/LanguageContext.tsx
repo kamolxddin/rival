@@ -20,22 +20,7 @@ const translations = {
     "nav.showroom": "Showroom",
     "nav.order": "Bepul loyiha olish",
 
-    form: {
-      title: "Bepul loyiha olish",
-      name: "Ism",
-      region: "Viloyat / Shahar",
-      phone: "Telefon",
-      length: "Uzunlik (mm)",
-      width: "Kenglik (mm)",
-      selectColor: "Rang tanlang",
-      selectMaterial: "Material tanlang",
-      material: "Material",
-      wish: "Qanday oshxona xohlaysiz?",
-      submit: "Buyurtma yuborish",
-      success: "Buyurtma yuborildi!",
-      newOrder: "Yangi buyurtma",
-      size: "O‘lchamlar",
-    },
+
     // Hero,
     "hero.title": "Sizning orzuingizdagi oshxona mebellari",
     "hero.subtitle":
@@ -102,21 +87,20 @@ const translations = {
     // Form
     // Form
     "form.title": "Bepul o‘lcham olish",
-    "form.firstName": "Ism",
-    "form.lastName": "Familiya",
+    "form.name": "Ism",
     "form.region": "Viloyat / Shahar",
     "form.phone": "Telefon raqam",
     "form.length": "Uzunlik (mm)",
     "form.width": "Kenglik (mm)",
     "form.thickness": "Qalinlik (mm)",
-    "form.color": "Rang tanlang",
-    "form.material": "Material tanlang",
+    "form.selectColor": "Rang tanlang",
+    "form.selectMaterial": "Material tanlang",
     "form.material.ldsp": "LDSP",
     "form.material.acrylic": "Akril",
     "form.wish": "Qanday oshxona xohlaysiz?",
     "form.submit": "Zayavka qoldirish",
     "form.success": "Zayavka yuborildi!",
-    "form.close": "Yopish",
+    
   },
   ru: {
     // Navbar
@@ -125,19 +109,7 @@ const translations = {
     "nav.showroom": "Контакты",
     "nav.order": "Получить бесплатный проект",
 
-    form: {
-      title: "Получить бесплатный проект",
-      name: "Имя",
-      region: "Регион / Город",
-      phone: "Телефон",
-      length: "Длина (мм)",
-      width: "Ширина (мм)",
-      selectColor: "Выберите цвет",
-      selectMaterial: "Выберите материал",
-      wish: "Какую кухню вы хотите?",
-      submit: "Отправить заявку",
-      success: "Заявка отправлена",
-    },
+  
 
     // Hero
     "hero.title": "Кухонная мебель вашей мечты",
@@ -205,15 +177,14 @@ const translations = {
 
     // Form
     "form.title": "Бесплатный замер",
-    "form.firstName": "Имя",
-    "form.lastName": "Фамилия",
+    "form.name": "Имя",
     "form.region": "Область / Город",
     "form.phone": "Номер телефона",
     "form.length": "Длина (мм)",
     "form.width": "Ширина (мм)",
     "form.thickness": "Толщина (мм)",
-    "form.color": "Выберите цвет",
-    "form.material": "Выберите материал",
+    "form.selectColor": "Выберите цвет",
+    "form.selectMaterial": "Выберите материал",
     "form.material.ldsp": "ЛДСП",
     "form.material.acrylic": "Акрил",
     "form.wish": "Какую кухню вы хотите?",
@@ -231,15 +202,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>("uz");
 
   const t = (key: string) => {
-    const keys = key.split(".");
-    let result = translations[language];
-
-    for (let k of keys) {
-      if (!result) break;
-      result = result[k];
-    }
-
-    return result || translations[language][key] || key;
+    return (translations[language] as any)[key] ?? key;
   };
 
   return (

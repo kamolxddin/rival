@@ -39,7 +39,6 @@ export function OrderForm({ isOpen, onClose }: Props) {
 
   const [form, setForm] = useState({
     name: "",
-
     region: "",
     phone: "",
     length: "",
