@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { OrderForm } from "@/shared/modals/OrderForm";
+import { OrderForm } from "@/shared/Modals/OrderForm";
 
 export default function Hero() {
   const { t } = useLanguage();
