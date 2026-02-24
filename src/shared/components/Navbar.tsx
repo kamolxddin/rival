@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
-import { OrderForm } from "@/shared/modals/OrderForm";
+import { OrderForm } from "../modals/OrderForm";
 
 export function Navbar() {
   const { language, setLanguage, t } = useLanguage();

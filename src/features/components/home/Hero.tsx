@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { OrderForm } from "@/shared/modals/OrderForm";
 
