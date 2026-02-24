@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Hero, About, Products, Showroom } from "@/features/components/home";
-import { LoadingScreen } from "@/shared/components/LoadingScreen";
-import { Navbar } from "@/shared/components/Navbar";
+import { LoadingScreen } from "@/shared/LoadingScreen";
+import { Navbar } from "@/shared/Navbar";
 
-import { Footer } from "@/shared/components/Footer";
+import { Footer } from "@/shared/Footer";
 
 export default function App() {
   const [loading, setLoading] = useState(true);

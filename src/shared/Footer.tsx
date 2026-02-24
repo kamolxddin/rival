@@ -3,7 +3,7 @@
 import { Phone } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useState } from "react";
-import { CommentModal } from "../modals/CommentModal";
+import { CommentModal } from "./modals/CommentModal";
 
 export function Footer() {
   const { t } = useLanguage();
