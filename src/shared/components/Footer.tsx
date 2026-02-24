@@ -3,7 +3,7 @@
 import { Phone } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useState } from "react";
-import { CommentModal } from "@/shared/Modals/CommentModal";
+import { CommentModal } from "@/shared/modals/CommentModal";
 
 export function Footer() {
   const { t } = useLanguage();
@@ -11,10 +11,7 @@ export function Footer() {
 
   return (
     <>
-      <footer
-        id="contact"
-        className="bg-[#1F6F63] text-white w-full"
-      >
+      <footer id="contact" className="bg-[#1F6F63] text-white w-full">
         <div className="px-6 sm:px-10 lg:px-16 py-16">
           <div className="max-w-8xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* 1. Company Info */}

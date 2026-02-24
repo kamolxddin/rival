@@ -5,7 +5,7 @@ import { Play, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
-export function Showroom() {
+export default function Showroom() {
   const { t } = useLanguage();
   const [isPlaying, setIsPlaying] = useState(false);
 

@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { timelineData } from "@/shared/About/About";
+import { timelineData } from "@/features/products/data/About";
 
-export function About() {
+export default function About() {
   const { t } = useLanguage();
 
   return (

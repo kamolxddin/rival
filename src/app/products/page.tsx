@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { products } from "@/shared/Products/Products";
+import { products } from "@/features/products/data/products";
 import { useRouter } from "next/navigation";
 
 const Products = () => {
