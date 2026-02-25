@@ -38,7 +38,7 @@ export function Navbar() {
         }`}
       >
         {/* INNER WRAPPER */}
-        <div className="max-w-9xl mx-auto h-[90px] flex items-center justify-between px-4 lg:px-8">
+        <div className="max-w-8xl mx-auto h-[90px] flex items-center justify-between px-4 lg:px-8">
           {/* LOGO */}
           <motion.a
             href="#"

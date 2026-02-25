@@ -1,8 +1,11 @@
 "use client";
 
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { OrderForm } from "@/shared/Modals/OrderForm";
+import { PrimaryButton } from "@/shared/Components/PrimaryButton";
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -10,49 +13,53 @@ export default function Hero() {
 
   return (
     <>
-      <section className="w-full pt-36 pb-16">
-        <div className="max-w-8xl  mx-auto px-5 lg:px-20">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-12">
-            {/* LEFT */}
-            <div className="flex-1  max-w-xl">
-              <h1 className="text-3xl sm:text-4xl lg:text-4xl font-semibold leading-tight mb-6 text-gray-900">
-                {t("hero.title")}
-              </h1>
+      <section className="relative w-full h-[95vh] min-h-[700px] overflow-hidden">
+        {/* BACKGROUND IMAGE */}
+        <Image
+          src="/mainImage.webp"
+          alt="Kitchen furniture by Miro"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
 
-              <p className="text-base sm:text-lg text-gray-600 mb-8">
-                {t("hero.subtitle")}
-              </p>
+        {/* DARK OVERLAY */}
+        <div className="absolute inset-0 bg-black/45" />
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={() => setOrderFormOpen(true)}
-                  className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#1F6F63] text-white font-semibold shadow-md"
-                >
-                  {t("hero.cta")}
-                </button>
+        {/* CONTENT */}
+        <div className="relative z-10 max-w-7xl mx-auto h-full flex items-center px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="max-w-2xl text-white"
+          >
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+              {t("hero.title")}
+            </h1>
 
-                <a
-                  href="#products"
-                  className="w-full sm:w-auto px-8 py-4 border border-[#1F6F63] text-[#1F6F63] rounded-xl text-center"
-                >
-                  {t("hero.projects")}
-                </a>
-              </div>
+            <p className="text-base md:text-lg mb-8 text-white/90">
+              {t("hero.subtitle")}
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <PrimaryButton onClick={() => setOrderFormOpen(true)}>
+                {t("hero.cta")}
+              </PrimaryButton>
+
+              <PrimaryButton
+                href="#products"
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-black"
+              >
+                {t("hero.projects")}
+              </PrimaryButton>
             </div>
-
-            {/* RIGHT */}
-            <div className="flex-2 w-full ">
-              <img
-                src="/mainImage.webp"
-                alt="Kitchen"
-                className="w-full  rounded-3xl shadow-2xl"
-              />
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* ORDER FORM MODAL */}
       <OrderForm
         isOpen={orderFormOpen}
         onClose={() => setOrderFormOpen(false)}
