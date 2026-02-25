@@ -11,10 +11,39 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Miro by rival",
-  description: "Oshxona mebellari",
+  title: "Miro by Rival – Zamonaviy Oshxona Mebellari",
+  description:
+    "Angrenda zamonaviy va sifatli oshxona mebellari. Tezkor ishlab chiqarish, professional dizayn va 2 yil kafolat bilan xizmat ko‘rsatamiz.",
+
+  metadataBase: new URL("https://rival-lac.vercel.app"),
+
+  openGraph: {
+    title: "Miro by Rival – Zamonaviy Oshxona Mebellari",
+    description:
+      "Sifatli va zamonaviy oshxona mebellari. Dizayn, ishlab chiqarish va o‘rnatish xizmatlari.",
+    url: "https://rival-lac.vercel.app",
+    siteName: "Miro by Rival",
+    images: [
+      {
+        url: "/logo.webp", // must be inside public/
+        width: 1200,
+        height: 630,
+        alt: "Miro by Rival Oshxona Mebellari",
+      },
+    ],
+    locale: "uz_UZ",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Miro by Rival – Zamonaviy Oshxona Mebellari",
+    description: "Sifatli va zamonaviy oshxona mebellari Angrenda.",
+    images: ["/logo.webp"],
+  },
+
   icons: {
-    icon: "/icon.png", // or favicon.ico
+    icon: "/icon.png",
     shortcut: "/icon.png",
     apple: "/icon.png",
   },
@@ -23,14 +52,15 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode; 
+  children: React.ReactNode;
 }) {
   return (
     <html lang="uz" suppressHydrationWarning>
-      <body className={`${poppins.className} overflow-x-hidden`} suppressHydrationWarning>
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
+      <body
+        className={`${poppins.className} overflow-x-hidden`}
+        suppressHydrationWarning
+      >
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );
