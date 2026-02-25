@@ -1,6 +1,5 @@
 "use client";
 
-import { cn } from "@/lib/utils"; // optional helper if you have one
 
 interface Props {
   children: React.ReactNode;
