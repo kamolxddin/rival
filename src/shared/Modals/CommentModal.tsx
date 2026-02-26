@@ -104,7 +104,7 @@ export function CommentModal({ isOpen, onClose }: CommentModalProps) {
               disabled={loading}
               className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition disabled:opacity-60"
             >
-              {loading ? t("comment.loadin  g") : t("comment.submit")}
+              {t("comment.submit")}
             </button>
           </>
         )}
