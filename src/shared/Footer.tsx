@@ -26,8 +26,7 @@ export function Footer() {
               </div>
 
               <p className="text-sm text-gray-200 leading-relaxed max-w-xs">
-                2020 yildan buyon oshxona mebellari, shkaflar va turli xil
-                interyer mebellarini ishlab chiqaramiz.
+                <span> {t("footer.description")}</span>
               </p>
 
               {/* subtle line */}

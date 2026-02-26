@@ -22,7 +22,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-24"
+          className="text-center mb-10"
         >
           <h2 className="text-4xl md:text-6xl font-semibold tracking-tight mb-6">
             {t("about.title")}
@@ -68,7 +68,7 @@ export default function About() {
 
                 {/* Step */}
                 <p className="text-xs uppercase tracking-widest text-white/50 mb-3">
-                  Step {item.step}
+                  Bosqich {item.step}
                 </p>
 
                 {/* Title */}

@@ -29,15 +29,14 @@ export default function Showroom() {
       <section id="showroom" className="py-36 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           {/* TITLE */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-[#1F6F63] mb-6">
+          <div className="text-center mb-13">
+            <h2 className="text-4xl md:text-6xl text-[#1F6F63] font-semibold tracking-tight mb-6">
               {t("showroom.title")}
             </h2>
 
             {/* BIG COMPANY STYLE CTA TEXT */}
-            <p className="text-xl md:text-2xl font-medium text-gray-700 max-w-3xl mx-auto">
-              Bizning ishlab chiqarish jarayonimizni va tayyor oshxona
-              mebellarini video orqali ko‘ring.
+            <p className="text-lg md:text-xl text-black/80 max-w-3xl mx-auto leading-relaxed">
+              <span> {t("showroom.subtitle")}</span>
             </p>
           </div>
 
@@ -74,7 +73,6 @@ export default function Showroom() {
                       fill
                       className="object-cover"
                     />
-
 
                     {/* Play Button */}
                     <div className="absolute inset-0 flex items-center justify-center">

@@ -21,18 +21,16 @@ const translations = {
     "nav.order": "Bepul loyiha olish",
 
     // Hero
-    "hero.badge": "Ramazon chegirmasi – 15%",
     "hero.title": "Buyurtma asosida sifatli oshxona mebellari",
     "hero.subtitle": "2 yil kafolat • Bepul o‘lchov • Tez yetkazib berish",
     "hero.ctaPrimary": "Bepul loyiha olish",
     "hero.ctaSecondary": "Hozir qo‘ng‘iroq qilish",
-    "hero.urgency":
-      "⚡ Hozir buyurtma bersangiz — bepul dizayn va chegirma mavjud.",
 
     // Products
     "products.title": "Mahsulotlarimiz",
     "products.subtitle": "Ishlab chiqarilgan mahsulotlarimizdan namunalar",
     "products.color.title": "Rang",
+    "products.button": "Barcha loyihalarni ko‘rish →",
 
     // About
     "about.title": "Biz haqimizda",
@@ -57,12 +55,7 @@ const translations = {
     // Showroom
     "showroom.title": "Bizning showroom",
     "showroom.subtitle":
-      "Ishxonamiz va tayyor mahsulotlarimizni video orqali ko'ring",
-    "showroom.watchVideo": "Showroom videosini tomosha qiling",
-    "showroom.projects": "Bajarilgan loyihalar",
-    "showroom.clients": "Mamnun mijozlar",
-    "showroom.experience": "Bozordagi tajriba",
-    "showroom.years": "yil",
+      "Bizning ishlab chiqarish jarayonimizni va tayyor oshxona mebellarini video orqali ko`ring.",
 
     // Contact
     "footer.company": "Kompaniya",
@@ -89,6 +82,14 @@ const translations = {
     "form.wish": "Qanday oshxona xohlaysiz?",
     "form.submit": "Zayavka qoldirish",
     "form.success": "Zayavka yuborildi!",
+
+    // Comment
+    "comment.title": "Izoh qoldirish",
+    "comment.placeholder": "Fikringizni yozing...",
+    "comment.rating": "Baholang",
+    "comment.submit": "Yuborish",
+    "comment.success": "Izohingiz uchun rahmat!",
+    "comment.error": "Xatolik yuz berdi. Qayta urinib ko‘ring.",
   },
   ru: {
     // Navbar
@@ -98,17 +99,16 @@ const translations = {
     "nav.order": "Получить бесплатный проект",
 
     // Hero
-    "hero.badge": "Рамаданская скидка – 15%",
     "hero.title": "Качественная кухонная мебель на заказ",
     "hero.subtitle": "2 года гарантии • Бесплатный замер • Быстрая доставка",
     "hero.ctaPrimary": "Получить бесплатный проект",
     "hero.ctaSecondary": "Позвонить сейчас",
-    "hero.urgency": "⚡ Закажите сейчас — получите бесплатный дизайн и скидку.",
 
     // Products
     "products.title": "Наши продукты",
     "products.subtitle": "Образцы нашей производимой продукции",
     "products.color.title": "Чвет",
+    "products.button": "Просмотреть все проекты →",
 
     // About
     "about.title": "О нас",
@@ -133,12 +133,7 @@ const translations = {
     // Showroom
     "showroom.title": "Наш шоу-рум",
     "showroom.subtitle":
-      "Посмотрите нашу мастерскую и готовые изделия через видео",
-    "showroom.watchVideo": "Посмотрите видео шоу-рума",
-    "showroom.projects": "Выполненные проекты",
-    "showroom.clients": "Довольные клиенты",
-    "showroom.experience": "Опыт на рынке",
-    "showroom.years": "лет",
+      "Посмотрите видео о процессе производства и готовой кухонной мебели.",
 
     // Contact
     "footer.company": "Компания",
@@ -147,7 +142,7 @@ const translations = {
     "footer.comment": "Оставить отзыв",
     "footer.rights": "Все права защищены",
     "footer.description":
-      "С 2020 года производим кухонную мебель, шкафы и интерьерные решения.",
+      "С 2020 года мы производим кухонную мебель, шкафы и различную мебель для интерьера.",
 
     // Form
     "form.title": "Получить бесплатный проект",
@@ -165,6 +160,14 @@ const translations = {
     "form.submit": "Оставить заявку",
     "form.success": "Заявка отправлена!",
     "form.close": "Закрыть",
+
+    // Comment
+    "comment.title": "Оставить отзыв",
+    "comment.placeholder": "Напишите ваше мнение...",
+    "comment.rating": "Оцените",
+    "comment.submit": "Отправить",
+    "comment.success": "Спасибо за ваш отзыв!",
+    "comment.error": "Произошла ошибка. Попробуйте снова.",
   },
 } as const;
 

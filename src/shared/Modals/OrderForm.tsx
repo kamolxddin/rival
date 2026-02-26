@@ -118,7 +118,7 @@ ${form.wish}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.96 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50  flex items-center justify-center p-4"
           >
             <div className="bg-white w-full max-w-xl rounded-2xl shadow-[0_25px_70px_-15px_rgba(0,0,0,0.25)] max-h-[90vh] overflow-y-auto">
               {/* Header */}
