@@ -28,8 +28,8 @@ export default function App() {
       <div>
         <Navbar />
         <Hero />
-        <About />
         <Products />
+        <About />
         <Showroom />
         <Footer />
       </div>

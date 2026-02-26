@@ -75,24 +75,21 @@ export function Navbar() {
               href="tel:+998555001800"
               className="flex items-center gap-2 text-gray-700 hover:text-[#1F6F63] text-sm"
             >
-              <Phone className="w-4 h-4" />
+              <Phone className="w-5 h-5" />
               +998 55 500 18 00
             </a>
 
             <motion.button
               onClick={() => setOrderFormOpen(true)}
-              initial={{ y: 0 }}
-              animate={{ y: [0, -8, 0] }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-3 py-2 rounded-xl bg-[#1F6F63] text-white font-semibold shadow-xl hover:bg-[#14534A] transition-all duration-300"
+              className="relative inline-flex items-center justify-center px-3 py-2 rounded-lg font-semibold text-lg text-white bg-[#1F6F63] overflow-hidden group"
+              whileHover={{ y: -2 }}
+              transition={{ duration: 0.2 }}
             >
-              {t("nav.order")}
+              <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500">
+                <span className="absolute -left-1/2 top-0 h-full w-1/2 bg-white/20 skew-x-12 transform translate-x-0 group-hover:translate-x-[300%] transition-transform duration-700" />
+              </span>
+
+              <span className="relative z-10"> {t("nav.order")}</span>
             </motion.button>
 
             {/* LANGUAGE SWITCH */}

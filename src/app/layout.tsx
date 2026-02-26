@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "Miro by Rival",
     images: [
       {
-        url: "/logo.webp", // must be inside public/
+        url: "/public/logo.webp", // must be inside public/
         width: 1200,
         height: 630,
         alt: "Miro by Rival Oshxona Mebellari",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Miro by Rival – Zamonaviy Oshxona Mebellari",
     description: "Sifatli va zamonaviy oshxona mebellari Angrenda.",
-    images: ["/logo.webp"],
+    images: ["/public/logo.webp"],
   },
 
   icons: {

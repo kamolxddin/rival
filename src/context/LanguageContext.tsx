@@ -20,30 +20,19 @@ const translations = {
     "nav.showroom": "Showroom",
     "nav.order": "Bepul loyiha olish",
 
-
-    // Hero,
-    "hero.title": "Sizning orzuingizdagi oshxona mebellari",
-    "hero.subtitle":
-      "Sizga zamonaviy dizayn va tezkor ishlab chiqarishni uyg‘unlashtirgan holda, orzuyingizdagi va hohishingizga mos ranglardagi oshxonangizni tayyorlab beramiz. Har bir loyiha ishonch, mas’uliyat va professional tajriba asosida amalga oshiriladi.",
-    "hero.cta": "Bepul loyiha olish",
-    "hero.projects": "Bizning mahsulotlar",
+    // Hero
+    "hero.badge": "Ramazon chegirmasi – 15%",
+    "hero.title": "Buyurtma asosida sifatli oshxona mebellari",
+    "hero.subtitle": "2 yil kafolat • Bepul o‘lchov • Tez yetkazib berish",
+    "hero.ctaPrimary": "Bepul loyiha olish",
+    "hero.ctaSecondary": "Hozir qo‘ng‘iroq qilish",
+    "hero.urgency":
+      "⚡ Hozir buyurtma bersangiz — bepul dizayn va chegirma mavjud.",
 
     // Products
     "products.title": "Mahsulotlarimiz",
     "products.subtitle": "Ishlab chiqarilgan mahsulotlarimizdan namunalar",
     "products.color.title": "Rang",
-    // Products Data
-    "product.1.name": "Ixcham oshxona",
-    "product.1.desc": "Yuqori sifatli va zamonaviy dizayn",
-    "product.1.color": "Oq",
-
-    "product.2.name": "O'zgacha Oshxona",
-    "product.2.desc": "Funksional va chiroyli interyer",
-    "product.2.color": "Yog‘och rang",
-
-    "product.3.name": "Premium oshxona",
-    "product.3.desc": "Hashamatli ko'rinish",
-    "product.3.color": "Jigarrang",
 
     // About
     "about.title": "Biz haqimizda",
@@ -86,7 +75,7 @@ const translations = {
 
     // Form
     // Form
-    "form.title": "Bepul o‘lcham olish",
+    "form.title": "Bepul loyiha olish",
     "form.name": "Ism",
     "form.region": "Viloyat / Shahar",
     "form.phone": "Telefon raqam",
@@ -100,7 +89,6 @@ const translations = {
     "form.wish": "Qanday oshxona xohlaysiz?",
     "form.submit": "Zayavka qoldirish",
     "form.success": "Zayavka yuborildi!",
-    
   },
   ru: {
     // Navbar
@@ -109,32 +97,18 @@ const translations = {
     "nav.showroom": "Контакты",
     "nav.order": "Получить бесплатный проект",
 
-  
-
     // Hero
-    "hero.title": "Кухонная мебель вашей мечты",
-    "hero.subtitle":
-      "Мы создадим кухню вашей мечты в желаемых вами цветах, сочетая современный дизайн и быстрое изготовление. Каждый проект выполняется с доверием, ответственностью и профессиональным опытом.",
-    "hero.cta": "Получить бесплатный проект",
-    "hero.projects": "Наши продукты",
+    "hero.badge": "Рамаданская скидка – 15%",
+    "hero.title": "Качественная кухонная мебель на заказ",
+    "hero.subtitle": "2 года гарантии • Бесплатный замер • Быстрая доставка",
+    "hero.ctaPrimary": "Получить бесплатный проект",
+    "hero.ctaSecondary": "Позвонить сейчас",
+    "hero.urgency": "⚡ Закажите сейчас — получите бесплатный дизайн и скидку.",
 
     // Products
     "products.title": "Наши продукты",
     "products.subtitle": "Образцы нашей производимой продукции",
     "products.color.title": "Чвет",
-
-    // Products Data
-    "product.1.name": "Компактная кухня",
-    "product.1.desc": "Высокое качество и современный дизайн",
-    "product.1.color": "Серый",
-
-    "product.2.name": "Уникальная Кухня",
-    "product.2.desc": "Функциональный и стильный интерьер",
-    "product.2.color": "Белый",
-
-    "product.3.name": "Премиум кухня",
-    "product.3.desc": "Просторный и удобный проект",
-    "product.3.color": "Деревянный цвет",
 
     // About
     "about.title": "О нас",
@@ -176,7 +150,7 @@ const translations = {
       "С 2020 года производим кухонную мебель, шкафы и интерьерные решения.",
 
     // Form
-    "form.title": "Бесплатный замер",
+    "form.title": "Получить бесплатный проект",
     "form.name": "Имя",
     "form.region": "Область / Город",
     "form.phone": "Номер телефона",

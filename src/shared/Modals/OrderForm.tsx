@@ -23,18 +23,8 @@ export function OrderForm({ isOpen, onClose }: Props) {
       value: "#D1D5DB",
       image: "/seriyKamen.webp",
     },
-    {
-      key: "wood",
-      name: "Yog‘och",
-      value: "#C8A97E",
-      image: "/dubUrban.webp",
-    },
-    {
-      key: "white",
-      name: "Oq",
-      value: "#FFFFFF",
-      image: "/akriyBeliy.webp",
-    },
+    { key: "wood", name: "Yog‘och", value: "#C8A97E", image: "/dubUrban.webp" },
+    { key: "white", name: "Oq", value: "#FFFFFF", image: "/akriyBeliy.webp" },
   ];
 
   const [form, setForm] = useState({
@@ -43,7 +33,6 @@ export function OrderForm({ isOpen, onClose }: Props) {
     phone: "",
     length: "",
     width: "",
-
     color: "",
     material: "",
     wish: "",
@@ -56,8 +45,6 @@ export function OrderForm({ isOpen, onClose }: Props) {
     };
   }, [isOpen]);
 
-  /* ---------- VALIDATORS ---------- */
-
   const textOnly = (value: string) => value.replace(/[^A-Za-zА-Яа-яЁё\s]/g, "");
 
   const numberOnly = (value: string) => value.replace(/[^0-9]/g, "");
@@ -66,8 +53,6 @@ export function OrderForm({ isOpen, onClose }: Props) {
     const clean = value.replace(/[^0-9]/g, "");
     return clean === "" ? "" : Math.max(1, Number(clean)).toString();
   };
-
-  /* ---------- SUBMIT ---------- */
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,7 +63,7 @@ export function OrderForm({ isOpen, onClose }: Props) {
     const message = `
 🪑 YANGI BUYURTMA
 
-👤 Ism: ${form.name} 
+👤 Ism: ${form.name}
 📍 Hudud: ${form.region}
 📞 Telefon: ${form.phone}
 
@@ -99,29 +84,11 @@ ${form.wish}
       const res = await fetch("/api/telegram", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message,
-          image: selectedImage,
-        }),
+        body: JSON.stringify({ message, image: selectedImage }),
       });
 
       if (res.ok) {
         setSubmitted(true);
-
-        // CLEAR FORM
-        setForm({
-          name: "",
-          region: "",
-          phone: "",
-          length: "",
-          width: "",
-          color: "",
-          material: "",
-          wish: "",
-        });
-
-        setSelectedImage("");
-
         setTimeout(() => {
           setSubmitted(false);
           onClose();
@@ -136,83 +103,79 @@ ${form.wish}
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* BACKDROP */}
+          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.4 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black z-40"
+            className="fixed inset-0 bg-black backdrop-blur-sm z-40"
             onClick={onClose}
           />
 
-          {/* MODAL */}
+          {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 30 }}
-            className="fixed inset-x-0 bottom-0 top-[90px] z-50 flex items-start justify-center p-4"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.96 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
-            <div className="bg-white text-gray-800 w-full max-w-lg rounded-xl shadow-2xl max-h-[85vh] overflow-y-auto">
-              {/* HEADER */}
-              <div className="flex justify-between items-center px-6 py-4 border-b">
-                <h2 className="text-lg font-semibold">{t("form.title")}</h2>
-                <button onClick={onClose}>
-                  <X />
+            <div className="bg-white w-full max-w-xl rounded-2xl shadow-[0_25px_70px_-15px_rgba(0,0,0,0.25)] max-h-[90vh] overflow-y-auto">
+              {/* Header */}
+              <div className="flex justify-between items-center px-8 py-6 border-b border-gray-100">
+                <h2 className="text-xl font-semibold">{t("form.title")}</h2>
+                <button
+                  onClick={onClose}
+                  className="text-gray-400 hover:text-gray-600 transition"
+                >
+                  <X size={20} />
                 </button>
               </div>
 
-              <div className="p-6">
+              <div className="px-8 py-6">
                 {submitted ? (
                   <div className="flex flex-col items-center py-12">
-                    <CheckCircle size={50} className="text-green-600" />
-                    <p className="mt-4 text-sm">{t("form.success")}</p>
+                    <CheckCircle size={50} className="text-[#1F6F63]" />
+                    <p className="mt-4 text-sm text-gray-600">
+                      {t("form.success")}
+                    </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    {/* TEXT */}
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    {/* Inputs */}
                     <input
-                      className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F6F63]"
                       placeholder={t("form.name")}
                       value={form.name}
                       onChange={(e) =>
-                        setForm({
-                          ...form,
-                          name: textOnly(e.target.value),
-                        })
+                        setForm({ ...form, name: textOnly(e.target.value) })
                       }
                       required
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#1F6F63]/40 focus:border-[#1F6F63] outline-none transition"
                     />
 
                     <input
-                      className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F6F63]"
                       placeholder={t("form.region")}
                       value={form.region}
                       onChange={(e) =>
-                        setForm({
-                          ...form,
-                          region: textOnly(e.target.value),
-                        })
+                        setForm({ ...form, region: textOnly(e.target.value) })
                       }
                       required
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#1F6F63]/40 focus:border-[#1F6F63] outline-none transition"
                     />
 
                     <input
-                      className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F6F63]"
                       placeholder={t("form.phone")}
                       value={form.phone}
                       onChange={(e) =>
-                        setForm({
-                          ...form,
-                          phone: numberOnly(e.target.value),
-                        })
+                        setForm({ ...form, phone: numberOnly(e.target.value) })
                       }
                       required
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#1F6F63]/40 focus:border-[#1F6F63] outline-none transition"
                     />
 
-                    {/* DIMENSIONS */}
+                    {/* Dimensions */}
                     <div className="grid grid-cols-2 gap-4">
                       <input
-                        className="border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F6F63]"
                         placeholder={t("form.length")}
                         value={form.length}
                         onChange={(e) =>
@@ -222,10 +185,10 @@ ${form.wish}
                           })
                         }
                         required
+                        className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#1F6F63]/40 focus:border-[#1F6F63] outline-none transition"
                       />
 
                       <input
-                        className="border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F6F63]"
                         placeholder={t("form.width")}
                         value={form.width}
                         onChange={(e) =>
@@ -235,29 +198,31 @@ ${form.wish}
                           })
                         }
                         required
+                        className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#1F6F63]/40 focus:border-[#1F6F63] outline-none transition"
                       />
                     </div>
 
-                    {/* COLORS */}
+                    {/* Colors */}
                     <div>
-                      <p className="text-sm font-medium mb-2">{t("form.selectColor")}</p>
-
-                      <div className="flex gap-3">
+                      <p className="text-sm font-medium mb-3">
+                        {t("form.selectColor")}
+                      </p>
+                      <div className="flex gap-4">
                         {colors.map((color) => (
                           <button
                             key={color.key}
                             type="button"
                             onClick={() => {
-                              setForm({
-                                ...form,
-                                color: color.name,
-                              });
+                              setForm({ ...form, color: color.name });
                               setSelectedImage(color.image);
                             }}
-                            className="w-8 h-8 rounded-full border"
-                            style={{
-                              backgroundColor: color.value,
-                            }}
+                            className={`w-10 h-10 rounded-full border-2 transition 
+                            ${
+                              form.color === color.name
+                                ? "border-[#1F6F63] scale-110"
+                                : "border-gray-200 hover:scale-105"
+                            }`}
+                            style={{ backgroundColor: color.value }}
                           />
                         ))}
                       </div>
@@ -265,48 +230,43 @@ ${form.wish}
                       {selectedImage && (
                         <img
                           src={selectedImage}
-                          className="mt-4 rounded-lg shadow"
+                          className="mt-4 rounded-xl shadow-sm"
                         />
                       )}
                     </div>
 
-                    {/* MATERIAL */}
+                    {/* Material */}
                     <select
-                      className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F6F63]"
-                      required
                       value={form.material}
                       onChange={(e) =>
-                        setForm({
-                          ...form,
-                          material: e.target.value,
-                        })
+                        setForm({ ...form, material: e.target.value })
                       }
+                      required
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#1F6F63]/40 focus:border-[#1F6F63] outline-none transition"
                     >
                       <option value="">{t("form.selectMaterial")}</option>
                       <option>LDSP</option>
                       <option>Akril</option>
                     </select>
 
-                    {/* WISH */}
+                    {/* Wish */}
                     <textarea
                       rows={3}
-                      className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F6F63]"
                       placeholder={t("form.wish")}
                       value={form.wish}
                       onChange={(e) =>
-                        setForm({
-                          ...form,
-                          wish: e.target.value,
-                        })
+                        setForm({ ...form, wish: e.target.value })
                       }
                       required
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#1F6F63]/40 focus:border-[#1F6F63] outline-none transition"
                     />
 
+                    {/* Submit */}
                     <button
                       type="submit"
-                      className="w-full bg-[#1F6F63] hover:bg-[#174F46] text-white py-2.5 rounded-lg text-sm transition"
+                      className="w-full bg-[#1F6F63] hover:bg-[#174F46] text-white py-3 rounded-xl text-sm font-medium transition-all duration-200 hover:shadow-lg active:scale-[0.98]"
                     >
-                      Buyurtma yuborish
+                      {t("form.submit")}
                     </button>
                   </form>
                 )}
